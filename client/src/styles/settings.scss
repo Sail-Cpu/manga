@@ -1,0 +1,17 @@
+@import 'colors';
+
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: $primary-color;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    ul{
+        list-style: none;
+        margin: 0;
+    }
+    h1{
+        margin: 0;
+    }
+}
