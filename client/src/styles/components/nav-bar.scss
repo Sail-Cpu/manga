@@ -1,7 +1,7 @@
 @import '../colors';
 
 .nav-bar-menu-icon{
-    z-index: 1;
+    z-index: 10;
     position: fixed;
     top: 20px;
     right: 20px;
@@ -14,9 +14,7 @@
     justify-content: center;
     position: absolute;
     top: 0;
-    left: -35px;
     width: 25px;
-    height: 100%;
     background-color: $secondary-color;
     overflow: hidden;
     div{
@@ -40,9 +38,14 @@
         to {
           transform: translateX(-100%);
         }
-      }
+    }
+}
+.menu-bar-manga{
+    left: -35px;
+    height: 100%;
 }
 .nav-bar{
+    z-index: 1;
     position: fixed;
     flex-direction: column;
     top: 0;
@@ -75,23 +78,6 @@
     height: -webkit-fill-available;
     scrollbar-color: rebeccapurple green;
     scrollbar-width: thin;
-}
-
-/* Largeur de la barre de défilement */
-::-webkit-scrollbar {
-    width: 13px;
-}
-  
-/* Couleur de la barre de défilement */
-::-webkit-scrollbar-thumb {
-    background-color: $fourth-color;
-    border-radius: 10px;
-    width: 5px;
-}
-  
-/* Couleur de la piste de défilement */
-::-webkit-scrollbar-track {
-    background-color: none;
 }
 
 .tabs-list{

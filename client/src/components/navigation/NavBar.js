@@ -22,7 +22,7 @@ const NavBar = () => {
             <img className="nav-bar-menu-icon" alt="menu_icon" style={{transform: activeNav ? 'rotate(-90deg)' : ''}} 
             src={Menu_Icon} onClick={() => setActiveNav(!activeNav)}/>
             <div className={`nav-bar ${activeNav ? 'active' : ''}`}>
-                <div className="bar-manga">
+                <div className="bar-manga menu-bar-manga">
                     <div>
                         <span>MANGA ガンマ&nbsp;</span>
                         <span>MANGA ガンマ&nbsp;</span>
