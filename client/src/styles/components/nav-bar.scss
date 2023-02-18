@@ -73,6 +73,25 @@
     left: 0;
     width: 100%;
     height: -webkit-fill-available;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
+
+/* Largeur de la barre de défilement */
+::-webkit-scrollbar {
+    width: 13px;
+}
+  
+/* Couleur de la barre de défilement */
+::-webkit-scrollbar-thumb {
+    background-color: $fourth-color;
+    border-radius: 10px;
+    width: 5px;
+}
+  
+/* Couleur de la piste de défilement */
+::-webkit-scrollbar-track {
+    background-color: none;
 }
 
 .tabs-list{
@@ -106,6 +125,10 @@
     padding: 10px 0px;
     li{
         padding: 5px 60px;
+        cursor: pointer;
+    }
+    Li:hover{
+        background-color:  $fourth-color;
     }
 }
 
@@ -119,4 +142,5 @@
     font-size: 20px;
     font-weight: 700;
     color: $text-color;
+    cursor: pointer;
 }

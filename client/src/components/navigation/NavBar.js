@@ -49,9 +49,9 @@ const NavBar = () => {
                 <Search />
             <div className="tabs-container">
                     <div className="tabs-list">
-                        {tabs.map((tab) => {
+                        {tabs.map((tab, index) => {
                             return(
-                                <Tabs name={tab.first} submenu={tab.other}/>
+                                <Tabs key={index} name={tab.first} submenu={tab.other}/>
                             )
                         })}
                     </div>
