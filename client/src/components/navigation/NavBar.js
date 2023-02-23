@@ -10,9 +10,9 @@ const NavBar = () => {
     const tabs = [
         {first: "HOME", other:[]},
         {first: "MANGAS", other:["TYPE", "CATEGORY", "NOUVEAUTES"]},
-        {first: "FILMS", other:["TYPE", "CATEGORY", "NOUVEAUTES"]},
+        {first: "MOVIES", other:["TYPE", "CATEGORY", "NOUVEAUTES"]},
         {first: "ANIMES", other:["TYPE", "CATEGORY", "NOUVEAUTES"]},
-        {first: "TOUT LES PRODUITS", other:[]},
+        {first: "ALL PRODUCTS", other:[]},
     ]
 
     const [activeNav, setActiveNav] = useState(false);
@@ -54,6 +54,7 @@ const NavBar = () => {
                                 <Tabs key={index} name={tab.first} submenu={tab.other}/>
                             )
                         })}
+                        <Tabs name="DATA FORM" submenu={[]}/>
                     </div>
                     <div className="tabs-login">CONNEXION</div>
                 </div>
