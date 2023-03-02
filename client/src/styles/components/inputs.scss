@@ -1,0 +1,69 @@
+@import '../colors.scss';
+//Form Selector with option
+.select-form{
+    width: 150px;
+    height: 50px;
+    background: none;
+    border: 4px solid $fifth-color;
+    color: $text-color;
+    font-size: 20px;
+    outline: none;
+    cursor: pointer;
+    .select-form-option{
+        color: black;
+    }
+}
+
+//Submit button
+.submit-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .submit-button-icon-container{
+        padding: 13px;
+        border: 7px solid $fifth-color;
+        transition: all 1s;
+        .submit-button-icon{
+            width: 35px;
+            height: 35px;
+            background-color: $fifth-color;
+        }
+    }
+    .submit-button{
+        transition: all 1s;
+        margin-left: 20px;
+        padding: 10px 40px;
+        background-color: $fifth-color;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 16px;
+    }
+    cursor: pointer;
+}
+
+.submit-button-container:hover{
+    .submit-button-icon-container{
+        transform: rotate(-90deg);
+    }
+    .submit-button{
+        font-size: 18px;
+    }
+}
+
+//Inputs
+.api-form-input-container{
+    margin: 0 20px;
+    h2{
+        margin: 7px 0px;
+        color: $text-color;
+    }
+    input{
+        width: 300px;
+        height: 50px;
+        border: 4px solid $fifth-color;
+        background: none;
+        color: $text-color;
+        outline: none;
+        font-size: 22px;
+    }
+}

@@ -8,12 +8,14 @@ import ImageCreate from "../../components/api_form/form/image/ImageCreate";
 const DataForm = () => {
 
     const [form, setForm] = useState('CREATE_IMAGE');
-
+    
     return(
         <div className="data-form-container">
             <ApiNavBar setForm={setForm}/>
             <form className="data-form">
-                <ApiFormTitle name={form.replace('_', ' : ')} />
+                <div className="data-form-title-container">
+                    <ApiFormTitle name={form.replace('_', ' : ')} />
+                </div>
                 {form === 'CREATE_IMAGE' &&
                     <ImageCreate />
                 }
