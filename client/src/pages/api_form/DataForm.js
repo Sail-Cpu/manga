@@ -2,8 +2,9 @@ import React, { useState } from "react";
 //Components
 import ApiNavBar from "../../components/api_form/navigation/ApiNavBar";
 import ApiFormTitle from "../../components/api_form/ApiFormTitle";
-//form
+//Form
 import ImageCreate from "../../components/api_form/form/image/ImageCreate";
+import ImageDelete from "../../components/api_form/form/image/ImageDelete";
 
 const DataForm = () => {
 
@@ -12,14 +13,17 @@ const DataForm = () => {
     return(
         <div className="data-form-container">
             <ApiNavBar setForm={setForm}/>
-            <form className="data-form">
+            <div className="data-form">
                 <div className="data-form-title-container">
                     <ApiFormTitle name={form.replace('_', ' : ')} />
                 </div>
-                {form === 'CREATE_IMAGE' &&
-                    <ImageCreate />
-                }
-            </form>
+                <div className="data-form-content" style={{display: form === 'CREATE_IMAGE' ? 'flex' : 'none'}}>
+                    <ImageCreate/>
+                </div>
+                <div className="data-form-content" style={{display: form === 'DELETE_IMAGE' ? 'flex' : 'none'}}>
+                    <ImageDelete />
+                </div>
+            </div>
         </div>
     )
 }

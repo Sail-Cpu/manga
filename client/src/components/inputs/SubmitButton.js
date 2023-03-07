@@ -2,14 +2,14 @@ import React from "react";
 
 const SubmitButton = (props) => {
     return(
-        <div className="submit-button-container" onClick={() => props.submit()}>
+        <button className="submit-button-container" type='submit'>
             <div className="submit-button-icon-container">
                 <div className="submit-button-icon"></div>
             </div>
             <div className="submit-button">
                 {props.name}
             </div>
-        </div>
+        </button>
     )
 }
 

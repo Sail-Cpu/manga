@@ -12,14 +12,12 @@ const ImageCreate = () => {
     const [link, setLink] = useState('');
     const [type, setType] = useState('background');
     const [error, setError] = useState('');
-    const [good, setGood] = useState('')
+    const [good, setGood] = useState('');
  
     const values = ['background', 'logo', 'poster'];
 
-    const Submit = () => {
-        post.postImage(name, link, type)
-        .then(response => {
-            console.log(response.data)
+    const CreateImage = () => {
+        post.postImage(name, link, type).then(response => {
             if(response.data.error){
                 setGood('');
                 setError(response.data.error);
@@ -29,14 +27,13 @@ const ImageCreate = () => {
                 setName('');
                 setLink('');
             }
-        })
-        .catch(err => {
-            console.log(err)
+        }).catch(error => {
+            console.log(error);
         })
     }
 
     return(
-        <form className="api-form-container">
+        <form className="api-form-container" onSubmit={CreateImage}>
             <div className="inputs-list">
                 <div className="api-form">
                     <Input name="Name" state={name} setState={setName} />
@@ -44,12 +41,11 @@ const ImageCreate = () => {
                     <Option name="Type" values={values} state={setType}/>
                 </div>
                 <div className="api-form-img" style={{backgroundImage: `url(${link})`}}></div>
-                
             </div>
             <span style={{color: 'red'}}>{error}</span>
             <span style={{color: 'green'}}>{good}</span>
             <div className="form-button-container">
-                <SubmitButton name="CREATE" submit={Submit}/>
+                <SubmitButton name="CREATE"/>
             </div>
         </form>
     )

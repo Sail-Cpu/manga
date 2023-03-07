@@ -16,6 +16,8 @@
 
 //Submit button
 .submit-button-container{
+    background: none;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +56,7 @@
 .api-form-input-container{
     margin: 0 20px;
     h2{
-        margin: 7px 0px;
+        margin: 7px 0;
         color: $text-color;
     }
     input{
@@ -65,5 +67,41 @@
         color: $text-color;
         outline: none;
         font-size: 22px;
+    }
+}
+
+//Search Row
+.search-row-container{
+    position: relative;
+    width: 450px;
+    .search-row-input{
+        width: 100%;
+        height: 60px;
+        color: $text-color;
+        border: 4px solid $fifth-color;
+        background: none;
+        font-size: 20px;
+        outline: none;
+    }
+    .search-row-content{
+        width: 100%;
+        background-color: $primary-color;
+    }
+    .search-row-data{
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 42px;
+        border-bottom: 2px solid $fifth-color;
+        color: $text-color;
+        cursor: pointer;
+    }
+    .search-row-data:hover{
+        background-color: $third-color;
+    }
+    .search-row-data.active{
+        background-color: $secondary-color;
     }
 }
