@@ -36,6 +36,12 @@ export const patch = {
             link: link,
             type: type
         });
+    },
+    patchAuthor: async (id, name, biography) => {
+        return axios.patch(`${BASE_LINK}/authors/${id}`, {
+            name: name,
+            biography: biography
+        });
     }
 }
 

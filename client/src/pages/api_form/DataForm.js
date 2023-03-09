@@ -7,6 +7,7 @@ import ImageDelete from "../../components/api_form/form/image/ImageDelete";
 import ImageModify from "../../components/api_form/form/image/ImageModify";
 import AuthorCreate from "../../components/api_form/form/author/AuthorCreate";
 import AuthorDelete from "../../components/api_form/form/author/AuthorDelete";
+import AuthorModify from "../../components/api_form/form/author/AuthorModify";
 
 const DataForm = () => {
 
@@ -35,9 +36,11 @@ const DataForm = () => {
                 <div className="data-form-content" style={{display: form === 'CREATE_AUTHOR' ? 'flex' : 'none'}}>
                     <AuthorCreate />
                 </div>
-
                 <div className="data-form-content" style={{display: form === 'DELETE_AUTHOR' ? 'flex' : 'none'}}>
                     <AuthorDelete />
+                </div>
+                <div className="data-form-content" style={{display: form === 'MODIFY_AUTHOR' ? 'flex' : 'none'}}>
+                    <AuthorModify />
                 </div>
 
             </div>
