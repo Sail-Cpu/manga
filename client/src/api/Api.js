@@ -6,6 +6,10 @@ export const get = {
     fetchImages: async (search) => {
         const endpoint = `${BASE_LINK}/images?search=${search}`
         return await (await axios.get(endpoint)).data;
+    },
+    fetchAuthor: async (search) => {
+        const endpoint = `${BASE_LINK}/authors?search=${search}`;
+        return await (await axios.get(endpoint)).data;
     }
 }
 
@@ -38,6 +42,10 @@ export const patch = {
 export const deleteRow = {
     deleteImage: async (id) => {
         const endpoint = `${BASE_LINK}/images/${id}`
+        return await (await axios.delete(endpoint)).data;
+    },
+    deleteAuthor: async (id) => {
+        const endpoint = `${BASE_LINK}/authors/${id}`;
         return await (await axios.delete(endpoint)).data;
     }
 }
