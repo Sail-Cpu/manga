@@ -1,6 +1,6 @@
 import React from "react";
 
-const Option = (props) => {
+const Select = (props) => {
 
     return(
         <div className="api-form-input-container">
@@ -18,4 +18,4 @@ const Option = (props) => {
     )
 }
 
-export default Option;
+export default Select;

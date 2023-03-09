@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //Components
 import Input from "../../inputs/Input";
-import Option from '../../inputs/Option';
+import Select from '../../inputs/Select';
 import SubmitButton from "../../../inputs/SubmitButton";
 //Api
 import {post} from '../../../../api/Api';
@@ -39,7 +39,7 @@ const ImageCreate = () => {
                 <div className="api-form">
                     <Input name="Name" state={name} setState={setName} />
                     <Input name="Link" state={link} setState={setLink} />
-                    <Option name="Type" values={values} state={setType}/>
+                    <Select name="Type" values={values} state={setType}/>
                 </div>
                 <div className="api-form-img" style={{backgroundImage: `url(${link})`}}></div>
             </div>

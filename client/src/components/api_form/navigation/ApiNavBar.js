@@ -4,7 +4,7 @@ import ApiFormTabs from "./ApiFormTabs";
 
 const ApiNavBar = (props) => {
 
-    const tabs = ['IMAGE'];
+    const tabs = ['IMAGE', 'AUTHOR'];
     const submenu = ['CREATE', 'MODIFY', 'DELETE'];
 
     return(

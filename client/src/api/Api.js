@@ -16,6 +16,12 @@ export const post = {
             link: link,
             type: type
         });
+    },
+    postAuthor: async (name, biography) => {
+        return axios.post(`${BASE_LINK}/authors`, {
+            name: name,
+            biography: biography
+        })
     }
 }
 
