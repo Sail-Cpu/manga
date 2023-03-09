@@ -5,7 +5,7 @@ const Option = (props) => {
     return(
         <div className="api-form-input-container">
             <h2>{props.name}</h2>
-            <select className="select-form" name="choice" onChange={(e) => props.state(e.target.value)}>
+            <select className="select-form" value={props.currentValue} name="choice" onChange={(e) => props.state(e.target.value)}>
             {
                 props.values.map((value, idx) => {
                     return(

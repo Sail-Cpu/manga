@@ -19,6 +19,16 @@ export const post = {
     }
 }
 
+export const patch = {
+    patchImage: async (id, name, link, type) => {
+        return axios.patch(`${BASE_LINK}/images/${id}`, {
+            name: name,
+            link: link,
+            type: type
+        });
+    }
+}
+
 export const deleteRow = {
     deleteImage: async (id) => {
         const endpoint = `${BASE_LINK}/images/${id}`

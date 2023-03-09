@@ -5,6 +5,7 @@ import ApiFormTitle from "../../components/api_form/ApiFormTitle";
 //Form
 import ImageCreate from "../../components/api_form/form/image/ImageCreate";
 import ImageDelete from "../../components/api_form/form/image/ImageDelete";
+import ImageModify from "../../components/api_form/form/image/ImageModify";
 
 const DataForm = () => {
 
@@ -22,6 +23,9 @@ const DataForm = () => {
                 </div>
                 <div className="data-form-content" style={{display: form === 'DELETE_IMAGE' ? 'flex' : 'none'}}>
                     <ImageDelete />
+                </div>
+                <div className="data-form-content" style={{display: form === 'MODIFY_IMAGE' ? 'flex' : 'none'}}>
+                    <ImageModify />
                 </div>
             </div>
         </div>

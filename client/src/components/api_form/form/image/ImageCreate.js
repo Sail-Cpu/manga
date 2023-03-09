@@ -16,7 +16,8 @@ const ImageCreate = () => {
  
     const values = ['background', 'logo', 'poster'];
 
-    const CreateImage = () => {
+    const CreateImage = (e) => {
+        e.preventDefault();
         post.postImage(name, link, type).then(response => {
             if(response.data.error){
                 setGood('');
@@ -33,7 +34,7 @@ const ImageCreate = () => {
     }
 
     return(
-        <form className="api-form-container" onSubmit={CreateImage}>
+        <form className="api-form-container" onSubmit={(e) => CreateImage(e)}>
             <div className="inputs-list">
                 <div className="api-form">
                     <Input name="Name" state={name} setState={setName} />
