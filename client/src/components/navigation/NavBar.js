@@ -2,6 +2,7 @@ import React, { useState } from "react";
 //Components
 import Search from './Search';
 import Tabs from './Tabs';
+import MangaBar from '../other/MangaBar';
 //Img
 import Menu_Icon from '../../assets/img/menu_icon.png'
 
@@ -22,30 +23,7 @@ const NavBar = () => {
             <img className="nav-bar-menu-icon" alt="menu_icon" style={{transform: activeNav ? 'rotate(-90deg)' : ''}} 
             src={Menu_Icon} onClick={() => setActiveNav(!activeNav)}/>
             <div className={`nav-bar ${activeNav ? 'active' : ''}`}>
-                <div className="bar-manga menu-bar-manga">
-                    <div>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                    </div>
-                </div>
+                <MangaBar classname="menu-bar-manga"/>
                 <Search />
             <div className="tabs-container">
                     <div className="tabs-list">

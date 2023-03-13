@@ -1,39 +1,17 @@
 import React from "react";
 //image
 import MangeType from '../assets/img/manga-type.png';
+import MangaBar from "../components/other/MangaBar";
 
 const Home = () => {
     return(
         <div className="home">
             <div className="hero-banner">
-                <div className="hero-banner-bar-manga bar-manga">
-                    <div>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                        <span>MANGA ガンマ&nbsp;</span>
-                    </div>
-                </div>
+                <MangaBar classname="hero-banner-bar-manga"/>
                 <div className="hero-banner-title-container">
-                    <span>ガ</span>
-                    <span>ン</span>
                     <span>マ</span>
+                    <span>ン</span>
+                    <span>ガ</span>
                 </div>
             </div>
             <div className="type-container">
