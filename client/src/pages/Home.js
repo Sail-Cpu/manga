@@ -1,9 +1,25 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 //image
 import MangeType from '../assets/img/manga-type.png';
 import MangaBar from "../components/other/MangaBar";
+import PosterBlock from "../components/product/PosterBlock";
+//api
+import { get } from '../api/Api';
 
 const Home = () => {
+
+    const [types, setTypes] = useState([]);
+
+    useEffect(() => {
+        get.fetchType().then(response => {
+            setTypes(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }, [])
+
+    console.log(types)
+
     return(
         <div className="home">
             <div className="hero-banner">
@@ -27,7 +43,17 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="type-content">
-
+                    {
+                        types.map((type, idx) => {
+                            return(
+                                <PosterBlock
+                                    key={idx}
+                                    name={type.name}
+                                    background_image={type.background_image}
+                                    japan_name={type.japan_name}/>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </div>

@@ -10,6 +10,10 @@ export const get = {
     fetchAuthor: async (search) => {
         const endpoint = `${BASE_LINK}/authors?search=${search}`;
         return await (await axios.get(endpoint)).data;
+    },
+    fetchType: async () => {
+        const endpoint = `${BASE_LINK}/types`;
+        return await (await axios.get(endpoint)).data;
     }
 }
 
