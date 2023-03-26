@@ -1,0 +1,27 @@
+@import "../colors.scss";
+
+.type-page-container{
+    padding: 30px;
+    width: 100%;
+}
+.type-page-container-left{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  .type-page-container-title{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 30px;
+      font-size: 20px;
+      font-weight: 700;
+      color: $text-color;
+  }
+  .type-page-container-left-background{
+       width: 100%;
+       height: 250px;
+       border: 10px solid $fifth-color;
+      background-position: center;
+      background-size: cover;
+   }
+}

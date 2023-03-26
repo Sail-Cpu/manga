@@ -31,6 +31,12 @@
     height: 130%;
 }
 
+@media screen and (max-width: 750px){
+    .bar-manga.hero-banner-bar-manga{
+        display: none;
+    }
+}
+
 .type-container{
     display: flex;
     flex-direction: column;
@@ -89,14 +95,14 @@
 
 .type-content{
     align-self: center;
-    max-width: 1100px;
+    max-width: 900px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-flow: row;
-    grid-auto-rows: 430px;
-    grid-gap: 0 6vw;
+    grid-auto-rows: 400px;
+    grid-gap: 0 4vw;
     margin-top: 50px;
-    width: 100%;
+    width: 80%;
 }
 
 @media screen and (min-width: 1600px) {
@@ -115,5 +121,39 @@
     }
     .type-content{
         margin-top: 80px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .type-container{
+        padding: 150px 50px 0 50px;
+    }
+    .type-header{
+        width: 100%;
+    }
+    .type-header-left{
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        .type-header-left-box{
+            position: initial;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+        h1{
+            bottom: -50px;
+            font-size: 30px;
+        }
+        img{
+            position: initial;
+            height: 100%;
+        }
+    }
+    .type-header-right{
+        display: none;
+    }
+    .type-content{
+        margin-top: 30px;
     }
 }

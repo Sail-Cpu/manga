@@ -18,8 +18,6 @@ const Home = () => {
         })
     }, [])
 
-    console.log(types)
-
     return(
         <div className="home">
             <div className="hero-banner">
@@ -48,6 +46,7 @@ const Home = () => {
                             return(
                                 <PosterBlock
                                     key={idx}
+                                    id={type.id}
                                     name={type.name}
                                     background_image={type.background_image}
                                     japan_name={type.japan_name}/>
