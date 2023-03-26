@@ -18,6 +18,10 @@ export const get = {
     fetchTypeById: async (id) => {
         const endpoint = `${BASE_LINK}/types/${id}`;
         return await (await axios.get(endpoint)).data;
+    },
+    fetchCollection: async (type) => {
+        const endpoint = `${BASE_LINK}/collections?type=${type}`;
+        return await (await axios.get(endpoint)).data;
     }
 }
 
