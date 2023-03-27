@@ -13,7 +13,8 @@ const Product = (props) => {
                 <div className='product-card-name' style={{fontSize: '20px', color: '#fff'}}>
                     {props.name}
                 </div>
-                <div className='product-card-heart' style={{justifyContent: 'flex-end'}}>
+                <div className='product-card-heart' style={{justifyContent: 'space-between', alignItems: 'flex-end'}}>
+                    <button>SEE MORE</button>
                     <FavoriteBorderIcon />
                 </div>
             </div>
