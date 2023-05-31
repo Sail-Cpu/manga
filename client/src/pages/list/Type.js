@@ -18,7 +18,7 @@ const Type = () => {
         console.log(error);
       });
     get
-      .fetchCollection(typeID)
+      .fetchCollections(typeID)
       .then((response) => {
         setCollections(response.data);
       })
@@ -26,8 +26,6 @@ const Type = () => {
         console.log(error);
       });
   }, [typeID]);
-
-  console.log(collections);
 
   return (
     <div className="type-page-container">

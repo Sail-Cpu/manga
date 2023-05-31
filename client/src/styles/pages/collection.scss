@@ -1,0 +1,73 @@
+@import "../colors";
+
+.collection-container {
+  width: 100%;
+  padding-top: 100px;
+  color: #ffffff;
+}
+
+.collection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .collection-head {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+  }
+
+  .collection-head-block-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    max-width: 1000px;
+    height: 100%;
+  }
+
+  .collection-head-img {
+    width: 100%;
+    height: 60%;
+    border: 4px solid $secondary-color;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .collection-head-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    height: 38%;
+    border: 4px solid $secondary-color;
+
+    .head-content-top {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 22px;
+    }
+
+    .head-content-middle {
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+
+    .head-content-bottom {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 25px;
+    }
+  }
+
+  .collection-long-bar {
+    margin: 40px 0;
+    width: 100%;
+    height: 4px;
+    background-color: $secondary-color;
+  }
+}

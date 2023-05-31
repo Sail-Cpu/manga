@@ -27,8 +27,14 @@ export const get = {
       await axios.get(endpoint)
     ).data;
   },
-  fetchCollection: async (type) => {
+  fetchCollections: async (type) => {
     const endpoint = `${BASE_LINK}/collections?type=${type}`;
+    return await (
+      await axios.get(endpoint)
+    ).data;
+  },
+  fetchCollection: async (collection) => {
+    const endpoint = `${BASE_LINK}/collections/${collection}`;
     return await (
       await axios.get(endpoint)
     ).data;
