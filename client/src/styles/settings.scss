@@ -1,35 +1,33 @@
-@import 'colors';
+@import "colors";
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    background-color: $primary-color;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0 20px;
+
+body {
+  background-color: $primary-color;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 20px;
+  margin: 0;
+
+  ul {
+    list-style: none;
     margin: 0;
-    ul{
-        list-style: none;
-        margin: 0;
-    }
-    h1{
-        margin: 0;
-    }
+  }
+
+  h1 {
+    margin: 0;
+  }
 }
 
 /* Largeur de la barre de défilement */
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
-  
+
 /* Couleur de la barre de défilement */
 ::-webkit-scrollbar-thumb {
-    background-color: $fourth-color;
-    border-radius: 10px;
-    width: 5px;
-}
-  
-/* Couleur de la piste de défilement */
-::-webkit-scrollbar-track {
-    background-color: none;
+  background-color: $fourth-color;
+  border-radius: 10px;
+  width: 5px;
 }

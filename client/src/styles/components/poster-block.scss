@@ -1,6 +1,6 @@
 @import "../colors";
-.poster-block-container{
-  a{
+.poster-block-container {
+  a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,7 @@
     height: 100%;
     text-decoration: none;
   }
-  .title{
+  .title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
   }
   cursor: pointer;
 }
-.poster-block{
+.poster-block {
   width: 100%;
   height: 100%;
   background-size: cover;
