@@ -39,6 +39,12 @@ export const get = {
       await axios.get(endpoint)
     ).data;
   },
+  fetchMangas: async (collection) => {
+    const endpoint = `${BASE_LINK}/mangas?collection=${collection}`;
+    return await (
+      await axios.get(endpoint)
+    ).data;
+  },
 };
 
 export const post = {

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { get } from "../../api/Api";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Stars from "../../components/other/Stars";
+import ProductList from "../../components/list/ProductList";
 //import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Collection = () => {
@@ -10,6 +11,7 @@ const Collection = () => {
   const [collection, setCollection] = useState();
   const [author, setAuthor] = useState();
   const [type, setType] = useState();
+  const [mangasList, setMangaList] = useState();
 
   const [delimited, setDelimited] = useState(true);
 
@@ -50,6 +52,21 @@ const Collection = () => {
     }
   }, [collection?.type_id]);
 
+  useEffect(() => {
+    if (collection?.id) {
+      get
+        .fetchMangas(collection.id)
+        .then((response) => {
+          setMangaList(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [collection?.id]);
+
+  console.log(mangasList);
+
   function TextDelimited(text) {
     if (delimited) {
       return text.substring(0, 1100) + "...";
@@ -61,7 +78,7 @@ const Collection = () => {
 
   return (
     <div className="collection-container">
-      {collection && author && type && (
+      {collection && author && type && mangasList && (
         <div className="collection">
           <div className="collection-head">
             <div className="collection-head-block-container">
@@ -131,6 +148,7 @@ const Collection = () => {
             </div>
           </div>
           <div className="collection-short-bar"></div>
+          <ProductList datas={mangasList} />
         </div>
       )}
     </div>

@@ -11,7 +11,7 @@ const ProductList = (props) => {
               key={idx}
               type={data.type}
               name={data.name}
-              image={data.background_images[0]}
+              image={data?.background_images?.[0] || data?.poster}
             />
           );
         })}
