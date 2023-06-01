@@ -12,7 +12,7 @@ const Type = () => {
     get
       .fetchTypeById(typeID)
       .then((response) => {
-        setType(response[0]);
+        setType(response.data[0]);
       })
       .catch((error) => {
         console.log(error);

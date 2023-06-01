@@ -1,0 +1,13 @@
+.stars-container {
+  display: flex;
+  align-items: center;
+
+  svg {
+    font-size: 35px;
+  }
+
+  span {
+    margin-left: 20px;
+    font-size: 25px;
+  }
+}
