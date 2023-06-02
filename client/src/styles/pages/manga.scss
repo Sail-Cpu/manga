@@ -1,0 +1,83 @@
+@import "../colors.scss";
+
+.manga-container {
+  padding: 100px 80px;
+  margin: 0 auto;
+  max-width: 1400px;
+  color: #fff;
+
+  h1 {
+    margin: 0;
+    font-size: 70px;
+    color: #fff;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 30px;
+    color: $secondary-color;
+  }
+
+  h3 {
+    margin: 0 0 5px 0;
+    font-size: 20px;
+    color: $secondary-color;
+  }
+}
+
+.manga-head {
+  display: flex;
+  width: 100%;
+  height: 550px;
+
+  .manga-head-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    border: 5px solid $secondary-color;
+
+    img {
+      width: 60%;
+      height: 60%;
+      box-shadow: 0 0 15px 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .manga-head-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 65%;
+    padding: 0 30px;
+  }
+
+  .manga-like {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+
+    svg {
+      font-size: 55px;
+    }
+  }
+}
+
+.manga-synopsis {
+  width: 100%;
+  margin-top: 30px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 18px;
+  }
+}

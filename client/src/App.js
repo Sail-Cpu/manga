@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import DataForm from "./pages/api_form/DataForm";
 import Collection from "./pages/list/Collection";
+import Manga from "./pages/product/Manga";
 //Components
 import NavBar from "./components/navigation/NavBar";
 import Type from "./pages/list/Type";
@@ -18,6 +19,7 @@ function App() {
           <Route path="/dataform" element={<DataForm />} />
           <Route path="/types/:typeID" element={<Type />} />
           <Route path="/collections/:collectionId" element={<Collection />} />
+          <Route path="/mangas/:mangaId" element={<Manga />} />
         </Routes>
       </Router>
     </div>

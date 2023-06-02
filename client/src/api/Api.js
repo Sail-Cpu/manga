@@ -40,7 +40,13 @@ export const get = {
     ).data;
   },
   fetchMangas: async (collection) => {
-    const endpoint = `${BASE_LINK}/mangas?collection=${collection}`;
+    const endpoint = `${BASE_LINK}/mangas?collection=${collection}&page_size=100`;
+    return await (
+      await axios.get(endpoint)
+    ).data;
+  },
+  fetchMangasById: async (manga) => {
+    const endpoint = `${BASE_LINK}/mangas/${manga}`;
     return await (
       await axios.get(endpoint)
     ).data;
