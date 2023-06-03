@@ -12,6 +12,7 @@ const ProductList = (props) => {
               type={data.type}
               name={data.name}
               image={data?.background_images?.[0] || data?.poster}
+              path={props.path + data.id}
             />
           );
         })}

@@ -46,7 +46,9 @@ const Type = () => {
               {type.japan_name}
             </div>
           </div>
-          {collections && <ProductList datas={collections} />}
+          {collections && (
+            <ProductList datas={collections} path="/collections/" />
+          )}
         </>
       )}
     </div>

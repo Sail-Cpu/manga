@@ -1,6 +1,7 @@
 import React from "react";
 //Icon
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
   return (
@@ -21,7 +22,9 @@ const Product = (props) => {
           className="product-card-heart"
           style={{ justifyContent: "space-between", alignItems: "flex-end" }}
         >
-          <button>SEE MORE</button>
+          <Link to={props.path}>
+            <button>SEE MORE</button>
+          </Link>
           <FavoriteBorderIcon />
         </div>
       </div>

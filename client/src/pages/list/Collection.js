@@ -148,7 +148,7 @@ const Collection = () => {
             </div>
           </div>
           <div className="collection-short-bar"></div>
-          <ProductList datas={mangasList} />
+          <ProductList datas={mangasList} path="/mangas/" />
         </div>
       )}
     </div>
