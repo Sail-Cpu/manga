@@ -9,6 +9,7 @@ import SignIn from "./pages/sign/SignIn";
 //Components
 import NavBar from "./components/navigation/NavBar";
 import Type from "./pages/list/Type";
+import SignUp from "./pages/sign/SignUp";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/collections/:collectionId" element={<Collection/>}/>
                     <Route path="/mangas/:mangaId" element={<Manga/>}/>
                     <Route path="/sign/signin" element={<SignIn/>}/>
+                    <Route path="/sign/signup" element={<SignUp/>}/>
                 </Routes>
             </Router>
         </div>
