@@ -2,8 +2,26 @@
   display: flex;
   align-items: center;
 
+  .stars {
+    display: flex;
+  }
+
+  .star {
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+
+    svg {
+      position: absolute;
+      font-size: 40px;
+    }
+  }
+
   svg {
     font-size: 35px;
+    //background: linear-gradient(to right, red 50%, transparent 50%);
+    //clip-path: inset(0 50% 0 0);
   }
 
   span {
