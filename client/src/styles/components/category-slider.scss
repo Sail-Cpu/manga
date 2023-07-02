@@ -1,0 +1,76 @@
+@import "../colors";
+
+.category-slider-container {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  margin-top: 50px;
+  padding: 10px 20px;
+  overflow-x: hidden;
+}
+
+.category-slide {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: $secondary-color;
+  margin-right: 30px;
+  color: $text-color;
+  font-size: 22px;
+  cursor: pointer;
+  background-size: cover;
+  background-position: 60%;
+  transition: 1.3s ease-in-out;
+
+  .category-slide-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  h1 {
+    position: relative;
+    transform: rotate(90deg);
+    transform-origin: left top;
+  }
+
+  .category-slide-left {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    white-space: nowrap;
+
+    h1 {
+      top: 10px;
+      left: 63px;
+    }
+  }
+
+  .category-slide-right {
+    display: flex;
+    align-items: flex-end;
+    width: 50%;
+    height: 100%;
+
+    h1 {
+      left: 100%;
+    }
+  }
+}
+
+.category-slide:hover {
+  background-position: 40%;
+}
+
+.swiper {
+  width: 100%;
+  height: 650px;
+  margin: 50px 0;
+}
+
+.swiper-slide {
+  width: 20%;
+  transition: 0.5s ease-in-out;
+}

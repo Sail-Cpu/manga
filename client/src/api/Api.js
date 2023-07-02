@@ -51,7 +51,7 @@ export const get = {
       await axios.get(endpoint)
     ).data;
   },
-  fetchCategory: async () => {
+  fetchCategories: async () => {
     const endpoint = `${BASE_LINK}/categories/`;
     return await (
       await axios.get(endpoint)

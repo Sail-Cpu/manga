@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+//Components
+import CategorySlider from "../components/list/CategorySlider";
 //image
 import MangeType from "../assets/img/manga-type.png";
 import MangaBar from "../components/other/MangaBar";
@@ -59,6 +61,7 @@ const Home = () => {
           })}
         </div>
       </div>
+      <CategorySlider />
     </div>
   );
 };

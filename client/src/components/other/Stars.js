@@ -23,9 +23,9 @@ const Stars = (props) => {
   return (
     <div className="stars-container">
       <div className="stars">
-        {rating(props.critic).map((rat) => {
+        {rating(props.critic).map((rat, idx) => {
           return (
-            <div className="star">
+            <div className="star" key={idx}>
               <StarBorderIcon className="star-border" />
               <StarIcon
                 className="star-no-border"
