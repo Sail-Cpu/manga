@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Mousewheel } from "swiper";
@@ -25,7 +26,7 @@ const CategorySlider = () => {
   return (
     <>
       <Swiper
-        slidesPerView={"auto"}
+        slidesPerView={5}
         spaceBetween={30}
         freeMode={true}
         modules={[FreeMode, Mousewheel]}
@@ -38,11 +39,13 @@ const CategorySlider = () => {
               onMouseOver={() => setActive(idx)}
               onMouseLeave={() => setActive(-1)}
             >
-              <CategorySlide
-                name={category.name}
-                japanName={category.japan_name}
-                image={category.image}
-              />
+              <Link to={`/category/${category.id}`}>
+                <CategorySlide
+                  name={category.name}
+                  japanName={category.japan_name}
+                  image={category.image}
+                />
+              </Link>
             </SwiperSlide>
           );
         })}
@@ -50,5 +53,4 @@ const CategorySlider = () => {
     </>
   );
 };
-
 export default CategorySlider;

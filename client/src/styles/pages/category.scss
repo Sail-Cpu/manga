@@ -1,0 +1,18 @@
+.category-container {
+  width: 100%;
+
+  .category-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    width: 100%;
+    height: 450px;
+
+    .category-slide {
+      width: 65%;
+      height: 100%;
+      margin-right: 0;
+    }
+  }
+}
