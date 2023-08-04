@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Pages
 import Home from "./pages/Home";
@@ -13,9 +13,11 @@ import Type from "./pages/list/Type";
 import NavBar from "./components/navigation/NavBar";
 
 function App() {
+  const [activeNav, setActiveNav] = useState(false);
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar activeNav={activeNav} setActiveNav={setActiveNav} />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />

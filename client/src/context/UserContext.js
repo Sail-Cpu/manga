@@ -1,23 +1,19 @@
 import React, { createContext, useState } from "react";
 
-export const UserContext = createContext(undefined);
+export const UserContext = createContext();
 
 export const UserContextProvider = (props) => {
-  const [user, setUser] = useState();
-
   function setToken(userToken) {
     sessionStorage.setItem("token", JSON.stringify(userToken));
   }
 
   function getToken() {
     const tokenString = sessionStorage.getItem("token");
-    const userToken = JSON.parse(tokenString);
-    setUser(userToken.data);
-    return userToken;
+    return JSON.parse(tokenString);
   }
 
   return (
-    <UserContext.Provider value={{ setToken, getToken, user }}>
+    <UserContext.Provider value={{ setToken, getToken }}>
       {props.children}
     </UserContext.Provider>
   );

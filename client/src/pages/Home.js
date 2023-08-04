@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 //Components
 import CategorySlider from "../components/list/CategorySlider";
 //image
@@ -7,9 +7,12 @@ import MangaBar from "../components/other/MangaBar";
 import PosterBlock from "../components/product/PosterBlock";
 //api
 import { get } from "../api/Api";
+import { UserContext } from "../context/UserContext";
 
 const Home = () => {
   const [types, setTypes] = useState([]);
+  const { user, getToken } = useContext(UserContext);
+
   useEffect(() => {
     get
       .fetchType()

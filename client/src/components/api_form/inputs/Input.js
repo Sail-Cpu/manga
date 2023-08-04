@@ -6,7 +6,7 @@ const Input = (props) => {
       <h2>{props.name}</h2>
       <input
         type="text"
-        style={props.borderColor ? { borderColor: props.borderColor } : {}}
+        style={{ borderColor: props.borderColor }}
         value={props.state}
         onChange={(e) => props.setState(e.target.value)}
       />

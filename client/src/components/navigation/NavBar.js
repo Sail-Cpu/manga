@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+//Context
+import { UserContext } from "../../context/UserContext";
 //Components
 import Search from "./Search";
 import Tabs from "./Tabs";
@@ -6,7 +8,7 @@ import MangaBar from "../other/MangaBar";
 //Img
 import Menu_Icon from "../../assets/img/menu_icon.png";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const tabs = [
     { first: "HOME", other: [] },
     { first: "MANGAS", other: ["TYPE", "CATEGORY", "NOUVEAUTES"] },
@@ -15,18 +17,18 @@ const NavBar = () => {
     { first: "ALL PRODUCTS", other: [] },
   ];
 
-  const [activeNav, setActiveNav] = useState(false);
+  const { user, getToken } = useContext(UserContext);
 
   return (
     <>
       <img
         className="nav-bar-menu-icon"
         alt="menu_icon"
-        style={{ transform: activeNav ? "rotate(-90deg)" : "" }}
+        style={{ transform: props.activeNav ? "rotate(-90deg)" : "" }}
         src={Menu_Icon}
-        onClick={() => setActiveNav(!activeNav)}
+        onClick={() => props.setActiveNav(!props.activeNav)}
       />
-      <div className={`nav-bar ${activeNav ? "active" : ""}`}>
+      <div className={`nav-bar ${props.activeNav ? "active" : ""}`}>
         <MangaBar classname="menu-bar-manga" />
         <Search />
         <div className="tabs-container">
@@ -35,6 +37,11 @@ const NavBar = () => {
               return <Tabs key={index} name={tab.first} submenu={tab.other} />;
             })}
             <Tabs name="DATA FORM" submenu={[]} />
+            <div className="user-tab-container">
+              <div className="user-tab">
+                {getToken()?.pseudo[0].toUpperCase()}
+              </div>
+            </div>
           </div>
           <div className="tabs-login">CONNEXION</div>
         </div>

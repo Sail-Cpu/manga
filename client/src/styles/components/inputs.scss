@@ -65,10 +65,11 @@
   h2 {
     margin: 7px 0;
     color: $text-color;
+    font-size: 25px;
   }
 
   input {
-    width: 300px;
+    width: 100%;
     height: 50px;
     border: 4px solid $fifth-color;
     background: none;
