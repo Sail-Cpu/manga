@@ -44,7 +44,7 @@ const Category = () => {
               image={category.image}
             />
           </div>
-          <ProductList datas={allCollections} />
+          <ProductList datas={allCollections} path="/collections/" />
         </>
       )}
     </div>
