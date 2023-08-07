@@ -57,4 +57,41 @@
 
     border-bottom: 3px solid $secondary-color;
   }
+
+  .user-page-content {
+    width: 100%;
+    margin-top: 100px;
+
+    .user-info {
+      margin-left: 90px;
+      display: flex;
+      width: 100%;
+
+      .user-info-left {
+        width: 200px;
+
+        .user-info-picture {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 90px;
+          width: 200px;
+          height: 200px;
+          background-color: $secondary-color;
+        }
+      }
+
+      .user-info-right {
+        padding: 0 30px;
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        color: $text-color;
+
+        span {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
 }
