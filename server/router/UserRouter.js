@@ -35,21 +35,16 @@ router.post("/signup", async (req, res) => {
     const testMaj = /[A-Z]/;
 
     if (pseudo.length <= 3 && !testString.test(pseudo)) {
-      res
-        .status(400)
-        .send({
-          error:
-            "Le pseudo ne peut contenir aucun caractère spécial à part (_).",
-        });
+      res.status(400).send({
+        error: "Le pseudo ne peut contenir aucun caractère spécial à part (_).",
+      });
       return;
     }
     if (password.length < 7 || !testMaj.test(password)) {
-      res
-        .status(400)
-        .send({
-          error:
-            "Le mot de passe doit contenir au moins une majuscule et 7 caractères.",
-        });
+      res.status(400).send({
+        error:
+          "Le mot de passe doit contenir au moins une majuscule et 7 caractères.",
+      });
       return;
     }
 

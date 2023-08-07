@@ -9,6 +9,7 @@ import Manga from "./pages/product/Manga";
 import SignIn from "./pages/sign/SignIn";
 import SignUp from "./pages/sign/SignUp";
 import Type from "./pages/list/Type";
+import User from "./pages/sign/User";
 //Components
 import NavBar from "./components/navigation/NavBar";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/category/:categoryID" element={<Category />} />
           <Route path="/sign/signin" element={<SignIn />} />
           <Route path="/sign/signup" element={<SignUp />} />
+          <Route path="/user" element={<User />}></Route>
         </Routes>
       </Router>
     </div>
