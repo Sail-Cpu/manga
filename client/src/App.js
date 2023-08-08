@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Pages
 import Home from "./pages/Home";
@@ -12,9 +12,12 @@ import Type from "./pages/list/Type";
 import User from "./pages/user/User";
 //Components
 import NavBar from "./components/navigation/NavBar";
+import { UserContext } from "./context/UserContext";
 
 function App() {
   const [activeNav, setActiveNav] = useState(false);
+
+  const { getToken } = useContext(UserContext);
 
   return (
     <div className="App">
@@ -29,7 +32,7 @@ function App() {
           <Route path="/category/:categoryID" element={<Category />} />
           <Route path="/sign/signin" element={<SignIn />} />
           <Route path="/sign/signup" element={<SignUp />} />
-          <Route path="/user" element={<User />}></Route>
+          {getToken() && <Route path="/user" element={<User />}></Route>}
         </Routes>
       </Router>
     </div>

@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
-import Product from "../product/Product";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+//Context
+import { UserContext } from "../../context/UserContext";
+//Components
+import Product from "../product/Product";
 
 const ProductList = (props) => {
   const [likes, setLikes] = useState([]);
 
+  const { getToken } = useContext(UserContext);
+
   const fetchUserById = async () => {
-    const endpoint = `http://localhost:3002/users/16`;
+    const endpoint = `http://localhost:3002/users/${getToken()?.id}`;
     return await (
       await axios.get(endpoint)
     ).data;
@@ -15,7 +20,11 @@ const ProductList = (props) => {
   useEffect(() => {
     fetchUserById()
       .then((response) => {
-        setLikes(response.likes);
+        if (props.path === "/collections/") {
+          setLikes(response.collectionsLikes);
+        } else if (props.path === "/mangas/") {
+          setLikes(response.mangasLikes);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -34,6 +43,7 @@ const ProductList = (props) => {
               name={data.name}
               image={data?.background_images?.[0] || data?.poster}
               path={props.path + data.id}
+              dataType={props.path.replace(/\//g, "")}
               likes={likes}
             />
           );

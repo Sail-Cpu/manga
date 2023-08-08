@@ -4,7 +4,7 @@ import { get } from "../../api/Api";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Stars from "../../components/other/Stars";
 import ProductList from "../../components/list/ProductList";
-//import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Collection = () => {
   const { collectionId } = useParams();

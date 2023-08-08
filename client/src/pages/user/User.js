@@ -3,6 +3,7 @@ import { UserContext } from "../../context/UserContext";
 //Components
 import UserNav from "../../components/navigation/UserNav";
 import UserInfo from "./UserInfo";
+import UserLikes from "./UserLikes";
 
 const User = () => {
   const { getToken } = useContext(UserContext);
@@ -19,6 +20,7 @@ const User = () => {
         {activeTab === "profil" && (
           <UserInfo pseudo={getToken().pseudo} email={getToken().email} />
         )}
+        {activeTab === "likes" && <UserLikes />}
       </div>
     </div>
   );

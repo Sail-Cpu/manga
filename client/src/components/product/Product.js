@@ -23,8 +23,9 @@ const Product = (props) => {
     method: "post",
     url: "http://localhost:3002/like",
     data: {
+      type: props.dataType,
       user_id: getToken()?.id,
-      collection_id: props.id,
+      product_id: props.id,
     },
   };
 

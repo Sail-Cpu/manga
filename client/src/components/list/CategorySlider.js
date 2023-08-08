@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Mousewheel } from "swiper/modules";
 import "swiper/css";
-import { FreeMode, Mousewheel } from "swiper";
 //Api
 import { get } from "../../api/Api";
 //Components

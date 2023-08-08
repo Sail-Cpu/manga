@@ -60,12 +60,12 @@
 
   .user-page-content {
     width: 100%;
-    margin-top: 100px;
 
     .user-info {
       margin-left: 90px;
       display: flex;
       width: 100%;
+      padding-top: 100px;
 
       .user-info-left {
         width: 200px;
@@ -91,6 +91,63 @@
         span {
           margin-bottom: 10px;
         }
+      }
+    }
+  }
+
+  .user-likes {
+    width: 100%;
+    padding: 50px 120px 0 120px;
+
+    .swiper {
+      position: relative;
+      height: 100%;
+
+      .swiper-slide {
+        padding: 0 60px;
+      }
+
+      .swiper-button-prev {
+        position: absolute;
+        top: 140px;
+      }
+
+      .swiper-button-next {
+        position: absolute;
+        top: 140px;
+      }
+    }
+
+    .swiper-slide {
+      transition: 0s;
+    }
+
+    .user-likes-title-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 300px;
+      background-color: $secondary-color;
+      color: #fff;
+      padding: 40px;
+      font-size: 60px;
+      background-size: cover;
+      background-position: center;
+
+      h1 {
+        z-index: 3;
+      }
+
+      .user-likes-title-back {
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.4;
       }
     }
   }
