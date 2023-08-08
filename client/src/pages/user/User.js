@@ -10,10 +10,15 @@ const User = () => {
 
   const [activeTab, setActiveTab] = useState("profil");
 
+  const disconect = () => {
+    sessionStorage.removeItem("token");
+    window.location = "/";
+  };
+
   return (
     <div className="user-page">
       <div className="user-page-top">
-        <button>Disconnect</button>
+        <button onClick={() => disconect()}>Disconnect</button>
       </div>
       <UserNav setActiveTab={setActiveTab} />
       <div className="user-page-content">
