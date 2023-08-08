@@ -17,11 +17,22 @@ router.get(`/users`, async (req, res) => {
 
 router.get(`/users/:userID`, async (req, res) => {
   try {
-    let { userID } = req.params;
-    let query = "select * from sera.public.users where id=$1";
-    pool.query(query, [userID], (error, result) => {
-      if (error) throw error;
-      res.send({ data: result.rows });
+    const { userID } = req.params;
+    const queryUser = "SELECT * FROM users WHERE id = $1";
+    const queryCollections =
+      "SELECT collection_id FROM user_collection_likes WHERE user_id = $1";
+
+    const userResult = await pool.query(queryUser, [userID]);
+    const collectionsResult = await pool.query(queryCollections, [userID]);
+
+    const user = userResult.rows[0];
+    const collectionIds = collectionsResult.rows.map(
+      (row) => row.collection_id,
+    );
+
+    res.send({
+      user: user,
+      likes: collectionIds,
     });
   } catch (error) {
     console.log(error);
@@ -84,9 +95,9 @@ router.post("/signin", async (req, res) => {
 
     let userSignIn = await pool.query(
       `select *
-                                           from users
-                                           where email = $1
-                                              or pseudo = $1`,
+             from users
+             where email = $1
+                or pseudo = $1`,
       [login],
       (err, result) => {
         if (result.rowCount > 0) {
@@ -107,6 +118,35 @@ router.post("/signin", async (req, res) => {
         }
       },
     );
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+router.post("/like", async (req, res) => {
+  try {
+    const { user_id, collection_id } = req.body;
+    let insert = "insert into user_collection_likes values($1, $2);";
+    pool.query(insert, [user_id, collection_id], (error, result) => {
+      if (error) throw error;
+      res.status(200).send({ message: "liked!" });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+router.delete("/like", async (req, res) => {
+  try {
+    const { user_id, collection_id } = req.body;
+    let drop =
+      "delete from user_collection_likes where user_id=$1 and collection_id=$2";
+    pool.query(drop, [user_id, collection_id], (error, result) => {
+      if (error) throw error;
+      res.status(200).send({ message: "disliked!" });
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: "Internal server error" });
