@@ -150,10 +150,15 @@ router.post("/like", async (req, res) => {
 
 router.delete("/like", async (req, res) => {
   try {
-    const { user_id, collection_id } = req.body;
-    let drop =
-      "delete from user_collection_likes where user_id=$1 and collection_id=$2";
-    pool.query(drop, [user_id, collection_id], (error, result) => {
+    const { type, user_id, product_id } = req.body;
+    let drop = "";
+    if (type === "collections") {
+      drop =
+        "delete from user_collection_likes where user_id=$1 and collection_id=$2";
+    } else if (type === "mangas") {
+      drop = "delete from user_manga_likes where user_id=$1 and manga_id=$2";
+    }
+    pool.query(drop, [user_id, product_id], (error, result) => {
       if (error) throw error;
       res.status(200).send({ message: "disliked!" });
     });

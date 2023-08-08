@@ -1,11 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+//Context
+import { UserContext } from "../../context/UserContext";
+//Api
 import { get } from "../../api/Api";
+//Icons
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Stars from "../../components/other/Stars";
-import { useParams } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import axios from "axios";
 
 const Manga = () => {
   const { mangaId } = useParams();
+  const { getToken } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const [isLiked, setIsLiked] = useState(false);
+
+  const fetchUserById = async () => {
+    const endpoint = `http://localhost:3002/users/${getToken()?.id}`;
+    return await (
+      await axios.get(endpoint)
+    ).data;
+  };
+
+  useEffect(() => {
+    fetchUserById()
+      .then((response) => {
+        if (response.mangasLikes.includes(parseInt(mangaId))) {
+          setIsLiked(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [mangaId]);
+
   const [manga, setManga] = useState();
   const [collection, setCollection] = useState();
   const [author, setAuthor] = useState();
@@ -61,7 +91,50 @@ const Manga = () => {
     }
   }, [collection?.type_id]);
 
-  console.log(type);
+  const likeConfig = {
+    method: "post",
+    url: "http://localhost:3002/like",
+    data: {
+      type: "mangas",
+      user_id: getToken()?.id,
+      product_id: mangaId,
+    },
+  };
+
+  const dislikeConfig = {
+    method: "delete",
+    url: "http://localhost:3002/like",
+    data: {
+      type: "mangas",
+      user_id: getToken()?.id,
+      product_id: mangaId,
+    },
+  };
+
+  const like = async (e) => {
+    if (!getToken()) {
+      navigate("/sign/signin");
+      return;
+    }
+    if (!isLiked) {
+      axios(likeConfig)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios(dislikeConfig)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div className="manga-container">
@@ -82,7 +155,14 @@ const Manga = () => {
               <h1>{manga.name}</h1>
               <h3>{type.name}</h3>
               <div className="manga-like">
-                <FavoriteBorderIcon className="heart" />
+                {!getToken() || !isLiked ? (
+                  <FavoriteBorderIcon
+                    className="heart"
+                    onClick={(e) => like(e)}
+                  />
+                ) : (
+                  <FavoriteIcon className="heart" onClick={(e) => like(e)} />
+                )}
                 <Stars />
               </div>
             </div>

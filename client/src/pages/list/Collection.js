@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { get } from "../../api/Api";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Stars from "../../components/other/Stars";
 import ProductList from "../../components/list/ProductList";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { UserContext } from "../../context/UserContext";
+import axios from "axios";
 
 const Collection = () => {
   const { collectionId } = useParams();
+  const navigate = useNavigate();
+  const { getToken } = useContext(UserContext);
+
+  const [isLiked, setIsLiked] = useState(false);
   const [collection, setCollection] = useState();
   const [categories, setCategories] = useState([]);
   const [author, setAuthor] = useState();
@@ -15,6 +21,25 @@ const Collection = () => {
   const [mangasList, setMangaList] = useState();
 
   const [delimited, setDelimited] = useState(true);
+
+  const fetchUserById = async () => {
+    const endpoint = `http://localhost:3002/users/${getToken()?.id}`;
+    return await (
+      await axios.get(endpoint)
+    ).data;
+  };
+
+  useEffect(() => {
+    fetchUserById()
+      .then((response) => {
+        if (response.collectionsLikes.includes(parseInt(collectionId))) {
+          setIsLiked(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [collectionId]);
 
   useEffect(() => {
     get
@@ -90,6 +115,51 @@ const Collection = () => {
     }
   }
 
+  const likeConfig = {
+    method: "post",
+    url: "http://localhost:3002/like",
+    data: {
+      type: "collections",
+      user_id: getToken()?.id,
+      product_id: collectionId,
+    },
+  };
+
+  const dislikeConfig = {
+    method: "delete",
+    url: "http://localhost:3002/like",
+    data: {
+      type: "collections",
+      user_id: getToken()?.id,
+      product_id: collectionId,
+    },
+  };
+
+  const like = async (e) => {
+    if (!getToken()) {
+      navigate("/sign/signin");
+      return;
+    }
+    if (!isLiked) {
+      axios(likeConfig)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios(dislikeConfig)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    setIsLiked(!isLiked);
+  };
+
   return (
     <div className="collection-container">
       {collection && author && type && mangasList && (
@@ -120,7 +190,14 @@ const Collection = () => {
           <div className="collection-info">
             <div className="collection-info-left">
               <div className="collection-info-like">
-                <FavoriteBorderIcon className="heart" />
+                {!getToken() || !isLiked ? (
+                  <FavoriteBorderIcon
+                    className="heart"
+                    onClick={(e) => like(e)}
+                  />
+                ) : (
+                  <FavoriteIcon className="heart" onClick={(e) => like(e)} />
+                )}
                 <Stars critic={(collection.critic / 2).toFixed(1)} />
               </div>
               <div className="collection-info-bonus">

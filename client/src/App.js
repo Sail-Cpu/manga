@@ -21,8 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar activeNav={activeNav} setActiveNav={setActiveNav} />
       <Router>
+        <NavBar activeNav={activeNav} setActiveNav={setActiveNav} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dataform" element={<DataForm />} />

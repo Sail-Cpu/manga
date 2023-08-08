@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 //Context
 import { UserContext } from "../../context/UserContext";
 //Components
@@ -10,7 +11,7 @@ import Menu_Icon from "../../assets/img/menu_icon.png";
 
 const NavBar = (props) => {
   const tabs = [
-    { first: "HOME", other: [] },
+    { first: "HOME", other: [], path: "/" },
     { first: "MANGAS", other: ["TYPE", "CATEGORY", "NOUVEAUTES"] },
     { first: "MOVIES", other: ["TYPE", "CATEGORY", "NOUVEAUTES"] },
     { first: "ANIMES", other: ["TYPE", "CATEGORY", "NOUVEAUTES"] },
@@ -34,16 +35,26 @@ const NavBar = (props) => {
         <div className="tabs-container">
           <div className="tabs-list">
             {tabs.map((tab, index) => {
-              return <Tabs key={index} name={tab.first} submenu={tab.other} />;
+              return (
+                <Link key={index} to={tab.path}>
+                  <Tabs name={tab.first} submenu={tab.other} />
+                </Link>
+              );
             })}
             <Tabs name="DATA FORM" submenu={[]} />
             <div className="user-tab-container">
-              <div className="user-tab">
-                {getToken()?.pseudo[0].toUpperCase()}
-              </div>
+              {getToken() && (
+                <Link to="/user">
+                  <div className="user-tab">
+                    {getToken()?.pseudo[0].toUpperCase()}
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
-          <div className="tabs-login">CONNEXION</div>
+          <Link to="/sign/signin">
+            <div className="tabs-login">CONNEXION</div>
+          </Link>
         </div>
       </div>
     </>

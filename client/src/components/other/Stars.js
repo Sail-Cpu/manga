@@ -16,7 +16,6 @@ const Stars = (props) => {
         stars.push(100);
       }
     }
-    console.log(stars);
     return stars;
   }
 
