@@ -9,6 +9,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Stars from "../../components/other/Stars";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import axios from "axios";
+import Commentary from "../../components/other/Commentary";
 
 const Manga = () => {
   const { mangaId } = useParams();
@@ -25,15 +26,17 @@ const Manga = () => {
   };
 
   useEffect(() => {
-    fetchUserById()
-      .then((response) => {
-        if (response.mangasLikes.includes(parseInt(mangaId))) {
-          setIsLiked(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (getToken()) {
+      fetchUserById()
+        .then((response) => {
+          if (response.mangasLikes.includes(parseInt(mangaId))) {
+            setIsLiked(true);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, [mangaId]);
 
   const [manga, setManga] = useState();
@@ -177,6 +180,7 @@ const Manga = () => {
               />
             }
           </div>
+          <Commentary type="mangas" productId={mangaId} />
         </div>
       )}
     </div>

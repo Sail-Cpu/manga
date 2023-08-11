@@ -19,25 +19,56 @@ router.get(`/users/:userID`, async (req, res) => {
   try {
     const { userID } = req.params;
     const queryUser = "SELECT * FROM users WHERE id = $1";
-    const queryCollections =
+    const queryCollectionsLikes =
       "SELECT collection_id FROM user_collection_likes WHERE user_id = $1";
-    const queryMangas =
+    const queryMangasLikes =
       "SELECT manga_id FROM user_manga_likes WHERE user_id = $1";
 
+    const queryCollectionsComment =
+      "SELECT * FROM user_collection_commentary WHERE user_id = $1";
+    const queryMangasLikesComment =
+      "SELECT * FROM user_manga_commentary WHERE user_id = $1";
+
     const userResult = await pool.query(queryUser, [userID]);
-    const collectionsResult = await pool.query(queryCollections, [userID]);
-    const mangasResult = await pool.query(queryMangas, [userID]);
+    const collectionsLikesResult = await pool.query(queryCollectionsLikes, [
+      userID,
+    ]);
+    const mangasLikesResult = await pool.query(queryMangasLikes, [userID]);
+    const collectionsCommentaryResult = await pool.query(
+      queryCollectionsComment,
+      [userID],
+    );
+    const mangasCommentaryResult = await pool.query(queryMangasLikesComment, [
+      userID,
+    ]);
 
     const user = userResult.rows[0];
-    const collectionIds = collectionsResult.rows.map(
+    const collectionLikesIds = collectionsLikesResult.rows.map(
       (row) => row.collection_id,
     );
-    const mangaIds = mangasResult.rows.map((row) => row.manga_id);
+    const mangaLikesIds = mangasLikesResult.rows.map((row) => row.manga_id);
+
+    const collectionCommentIds = collectionsCommentaryResult.rows.map((row) => {
+      return {
+        collection_Id: row.collection_id,
+        title: row.title,
+        commentary: row.commentary,
+      };
+    });
+    const mangaCommentIds = mangasCommentaryResult.rows.map((row) => {
+      return {
+        manga_Id: row.manga_id,
+        title: row.title,
+        commentary: row.commentary,
+      };
+    });
 
     res.send({
       user: user,
-      collectionsLikes: collectionIds,
-      mangasLikes: mangaIds,
+      collectionsLikes: collectionLikesIds,
+      mangasLikes: mangaLikesIds,
+      collectionComment: collectionCommentIds,
+      mangaComment: mangaCommentIds,
     });
   } catch (error) {
     console.log(error);
@@ -161,6 +192,53 @@ router.delete("/like", async (req, res) => {
     pool.query(drop, [user_id, product_id], (error, result) => {
       if (error) throw error;
       res.status(200).send({ message: "disliked!" });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+router.post("/commentary", async (req, res) => {
+  try {
+    const { type, user_id, product_id, title, commentary } = req.body;
+    let insert = "";
+    if (type === "collections") {
+      insert =
+        "insert into user_collection_commentary(user_id, collection_id, commentary, title) values($1, $2, $3, $4);";
+    } else if (type === "mangas") {
+      insert =
+        "insert into user_manga_commentary(user_id, manga_id, commentary, title) values($1, $2, $3, $4);";
+    }
+    pool.query(
+      insert,
+      [user_id, product_id, commentary, title],
+      (error, result) => {
+        if (error) throw error;
+        res.status(200).send({ message: "Commentary!" });
+      },
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+router.get("/commentary/:productId", async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const { type } = req.query;
+    let queryComment = "";
+    if (type === "collections") {
+      queryComment =
+        "select * from user_collection_commentary where collection_id=$1;";
+    } else if (type === "mangas") {
+      queryComment = "select * from user_manga_commentary where manga_id=$1;";
+    }
+    let queryUser = "select * from users where id=$1";
+    pool.query(queryComment, [productId], (error, result) => {
+      if (error) throw error;
+      res.status(200).send({ data: result.rows });
     });
   } catch (error) {
     console.log(error);

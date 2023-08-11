@@ -1,0 +1,66 @@
+@import "../colors";
+
+.commentary-container {
+  margin-top: 40px;
+  width: 60%;
+
+  h1 {
+    font-size: 35px;
+  }
+
+  svg {
+    font-size: 40px;
+    color: $secondary-color;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  svg:hover {
+    color: #60777e;
+  }
+
+  .comment-form {
+    input {
+      width: 45%;
+    }
+
+    textarea {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  .comment-container {
+    margin-top: 30px;
+
+    .comment-top {
+      display: flex;
+      align-items: center;
+
+      .comment-top-user-image {
+        width: 50px;
+        height: 50px;
+        background-color: $secondary-color;
+        border-radius: 50px;
+        margin-right: 20px;
+      }
+
+      h3 {
+        color: #fff;
+      }
+    }
+
+    .comment-title {
+      margin-top: 15px;
+
+      h2 {
+        color: #fff;
+        margin: 0;
+      }
+    }
+
+    .comment-text {
+      margin-top: -5px;
+    }
+  }
+}

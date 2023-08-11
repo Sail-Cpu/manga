@@ -11,7 +11,6 @@ import { UserContext } from "../context/UserContext";
 
 const Home = () => {
   const [types, setTypes] = useState([]);
-  const { user, getToken } = useContext(UserContext);
 
   useEffect(() => {
     get

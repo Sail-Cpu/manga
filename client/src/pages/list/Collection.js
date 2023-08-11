@@ -30,15 +30,17 @@ const Collection = () => {
   };
 
   useEffect(() => {
-    fetchUserById()
-      .then((response) => {
-        if (response.collectionsLikes.includes(parseInt(collectionId))) {
-          setIsLiked(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (getToken()) {
+      fetchUserById()
+        .then((response) => {
+          if (response.collectionsLikes.includes(parseInt(collectionId))) {
+            setIsLiked(true);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, [collectionId]);
 
   useEffect(() => {

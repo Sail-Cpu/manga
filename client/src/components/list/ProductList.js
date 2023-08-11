@@ -18,17 +18,19 @@ const ProductList = (props) => {
   };
 
   useEffect(() => {
-    fetchUserById()
-      .then((response) => {
-        if (props.path === "/collections/") {
-          setLikes(response.collectionsLikes);
-        } else if (props.path === "/mangas/") {
-          setLikes(response.mangasLikes);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (getToken()) {
+      fetchUserById()
+        .then((response) => {
+          if (props.path === "/collections/") {
+            setLikes(response.collectionsLikes);
+          } else if (props.path === "/mangas/") {
+            setLikes(response.mangasLikes);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
 
   return (
