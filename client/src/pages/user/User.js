@@ -4,6 +4,7 @@ import { UserContext } from "../../context/UserContext";
 import UserNav from "../../components/navigation/UserNav";
 import UserInfo from "./UserInfo";
 import UserLikes from "./UserLikes";
+import UserCommentary from "./UserCommentary";
 
 const User = () => {
   const { getToken } = useContext(UserContext);
@@ -26,6 +27,7 @@ const User = () => {
           <UserInfo pseudo={getToken().pseudo} email={getToken().email} />
         )}
         {activeTab === "likes" && <UserLikes />}
+        {activeTab === "commentary" && <UserCommentary />}
       </div>
     </div>
   );

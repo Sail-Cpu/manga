@@ -151,4 +151,73 @@
       }
     }
   }
+
+  .user-commentary-container {
+    display: grid;
+    width: 100%;
+    padding: 20px 100px;
+    gap: 20px;
+    justify-content: center;
+
+    .user-commentary-column {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .user-comment {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+        border: 4px solid $secondary-color;
+        border-top-right-radius: 40px;
+      }
+
+      .user-comment-top {
+        display: flex;
+      }
+
+      .user-comment-bottom {
+        margin-top: 10px;
+        font-size: 15px;
+        color: $text-color;
+        width: 100%;
+      }
+
+      .user-comment-image {
+        width: 70px;
+        height: 70px;
+        border: 3px solid $secondary-color;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .user-comment-title-container {
+        .user-comment-title {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: fit-content;
+          padding: 0 10px;
+          height: 100%;
+        }
+
+        h1 {
+          font-size: 22px;
+          color: $text-color;
+        }
+
+        h2 {
+          font-size: 18px;
+          color: #818181;
+          margin: 0;
+        }
+
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
 }

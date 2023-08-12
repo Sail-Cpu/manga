@@ -44,7 +44,7 @@ const Commentary = (props) => {
       });
     setNewComments((newComments) => [
       ...newComments,
-      { title: title, commentary: commentary },
+      { title: title, commentary: commentary, user_id: getToken()?.id },
     ]);
     setToggleCommentaryForm(false);
   }
@@ -87,7 +87,7 @@ const Commentary = (props) => {
           <SubmitButton name="Submit" />
         </form>
       )}
-      {newComments.length > 0 && <Comment datas={newComments} />}
+      {newComments.length > 0 && <Comment datas={newComments[0]} />}
       {allComments.map((comment, idx) => {
         return <Comment key={idx} datas={comment} />;
       })}
