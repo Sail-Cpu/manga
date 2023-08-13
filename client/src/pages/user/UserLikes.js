@@ -4,7 +4,8 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 //Api
-import { get } from "../../api/Api";
+import { get } from "../../api/ApiManga";
+import { User } from "../../api/ApiUser";
 //Context
 import { UserContext } from "../../context/UserContext";
 //Components
@@ -20,15 +21,8 @@ const UserLikes = () => {
 
   const { getToken } = useContext(UserContext);
 
-  const fetchUserById = async () => {
-    const endpoint = `http://localhost:3002/users/${getToken()?.id}`;
-    return await (
-      await axios.get(endpoint)
-    ).data;
-  };
-
   useEffect(() => {
-    fetchUserById()
+    User.fetchUserById(getToken()?.id)
       .then((response) => {
         for (let i = 0; i < response.collectionsLikes.length; i++) {
           get

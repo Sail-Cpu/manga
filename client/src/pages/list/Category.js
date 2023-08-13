@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 //Api
-import { get } from "../../api/Api";
+import { get } from "../../api/ApiManga";
 //Components
 import CategorySlide from "../../components/product/CategorySlide";
 import { useParams } from "react-router-dom";

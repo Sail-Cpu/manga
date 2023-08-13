@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Mousewheel } from "swiper/modules";
 import "swiper/css";
 //Api
-import { get } from "../../api/Api";
+import { get } from "../../api/ApiManga";
 //Components
 import CategorySlide from "../product/CategorySlide";
 

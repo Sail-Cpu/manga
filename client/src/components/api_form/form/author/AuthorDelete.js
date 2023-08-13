@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SearchRow from "../../inputs/SearchRow";
 import SubmitButton from "../../../inputs/SubmitButton";
 //Api
-import { get, deleteRow } from "../../../../api/Api";
+import { get, deleteRow } from "../../../../api/ApiManga";
 
 const AuthorDelete = () => {
   const [data, setData] = useState();

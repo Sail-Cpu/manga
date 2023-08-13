@@ -6,7 +6,7 @@ import MangeType from "../assets/img/manga-type.png";
 import MangaBar from "../components/other/MangaBar";
 import PosterBlock from "../components/product/PosterBlock";
 //api
-import { get } from "../api/Api";
+import { get } from "../api/ApiManga";
 import { UserContext } from "../context/UserContext";
 
 const Home = () => {

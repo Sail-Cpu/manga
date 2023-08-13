@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 //Api
-import { get } from "../../api/Api";
+import { get } from "../../api/ApiManga";
 import * as url from "url";
 
 const UserComment = (props) => {

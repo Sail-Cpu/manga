@@ -4,7 +4,7 @@ import Input from "../../inputs/Input";
 import TextArea from "../../inputs/TextArea";
 import SubmitButton from "../../../inputs/SubmitButton";
 //Api
-import { post } from "../../../../api/Api";
+import { post } from "../../../../api/ApiManga";
 
 const AuthorCreate = () => {
   const [name, setName] = useState("");

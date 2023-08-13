@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { get } from "../../api/Api";
+import { get } from "../../api/ApiManga";
 import { useParams } from "react-router-dom";
 import ProductList from "../../components/list/ProductList";
 

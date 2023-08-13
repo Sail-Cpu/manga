@@ -4,9 +4,10 @@ import Input from "../../inputs/Input";
 import Select from "../../inputs/Select";
 import SubmitButton from "../../../inputs/SubmitButton";
 import SearchRow from "../../inputs/SearchRow";
-import { get } from "../../../../api/Api";
+import { get } from "../../../../api/ApiManga";
 //Api
-import { patch } from "../../../../api/Api";
+import { patch } from "../../../../api/ApiManga";
+
 const ImageModify = () => {
   const values = ["background", "logo", "poster"];
 

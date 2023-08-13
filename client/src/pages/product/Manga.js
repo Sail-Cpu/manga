@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 //Context
 import { UserContext } from "../../context/UserContext";
 //Api
-import { get } from "../../api/Api";
+import { get } from "../../api/ApiManga";
+import { User, like } from "../../api/ApiUser";
 //Icons
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Stars from "../../components/other/Stars";
@@ -18,16 +19,9 @@ const Manga = () => {
 
   const [isLiked, setIsLiked] = useState(false);
 
-  const fetchUserById = async () => {
-    const endpoint = `http://localhost:3002/users/${getToken()?.id}`;
-    return await (
-      await axios.get(endpoint)
-    ).data;
-  };
-
   useEffect(() => {
     if (getToken()) {
-      fetchUserById()
+      User.fetchUserById(getToken()?.id)
         .then((response) => {
           if (response.mangasLikes.includes(parseInt(mangaId))) {
             setIsLiked(true);
@@ -114,31 +108,6 @@ const Manga = () => {
     },
   };
 
-  const like = async (e) => {
-    if (!getToken()) {
-      navigate("/sign/signin");
-      return;
-    }
-    if (!isLiked) {
-      axios(likeConfig)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      axios(dislikeConfig)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    setIsLiked(!isLiked);
-  };
-
   return (
     <div className="manga-container">
       {manga && collection && author && type && (
@@ -161,10 +130,31 @@ const Manga = () => {
                 {!getToken() || !isLiked ? (
                   <FavoriteBorderIcon
                     className="heart"
-                    onClick={(e) => like(e)}
+                    onClick={(e) =>
+                      like(
+                        navigate,
+                        getToken().id,
+                        isLiked,
+                        likeConfig,
+                        dislikeConfig,
+                        setIsLiked
+                      )
+                    }
                   />
                 ) : (
-                  <FavoriteIcon className="heart" onClick={(e) => like(e)} />
+                  <FavoriteIcon
+                    className="heart"
+                    onClick={(e) =>
+                      like(
+                        navigate,
+                        getToken().id,
+                        isLiked,
+                        likeConfig,
+                        dislikeConfig,
+                        setIsLiked
+                      )
+                    }
+                  />
                 )}
                 <Stars />
               </div>

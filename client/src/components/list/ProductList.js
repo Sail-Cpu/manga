@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+//Api
+import { User } from "../../api/ApiUser";
 //Context
 import { UserContext } from "../../context/UserContext";
 //Components
@@ -10,16 +12,9 @@ const ProductList = (props) => {
 
   const { getToken } = useContext(UserContext);
 
-  const fetchUserById = async () => {
-    const endpoint = `http://localhost:3002/users/${getToken()?.id}`;
-    return await (
-      await axios.get(endpoint)
-    ).data;
-  };
-
   useEffect(() => {
     if (getToken()) {
-      fetchUserById()
+      User.fetchUserById(getToken()?.id)
         .then((response) => {
           if (props.path === "/collections/") {
             setLikes(response.collectionsLikes);

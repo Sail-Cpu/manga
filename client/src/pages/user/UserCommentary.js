@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { get } from "../../api/Api";
+//Api
+import { get } from "../../api/ApiManga";
+import { User } from "../../api/ApiUser";
+//Context
 import { UserContext } from "../../context/UserContext";
+//Components
 import UserComment from "../../components/other/UserComment";
 
 const UserCommentary = () => {
@@ -38,16 +42,10 @@ const UserCommentary = () => {
 
   const [allComment, setAllComment] = useState([]);
 
-  const fetchUserById = async () => {
-    const endpoint = `http://localhost:3002/users/${getToken()?.id}`;
-    return await (
-      await axios.get(endpoint)
-    ).data;
-  };
-
   useEffect(() => {
-    fetchUserById()
+    User.fetchUserById(getToken()?.id)
       .then((response) => {
+        console.log(response);
         let mangaComment = response.mangaComment;
         for (let i = 0; i < mangaComment.length; i++) {
           get

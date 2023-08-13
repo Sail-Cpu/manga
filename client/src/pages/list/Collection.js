@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { get } from "../../api/Api";
+import { get } from "../../api/ApiManga";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Stars from "../../components/other/Stars";
 import ProductList from "../../components/list/ProductList";

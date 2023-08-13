@@ -4,9 +4,10 @@ import Input from "../../inputs/Input";
 import TextArea from "../../inputs/TextArea";
 import SubmitButton from "../../../inputs/SubmitButton";
 import SearchRow from "../../inputs/SearchRow";
-import { get } from "../../../../api/Api";
+import { get } from "../../../../api/ApiManga";
 //Api
-import { patch } from "../../../../api/Api";
+import { patch } from "../../../../api/ApiManga";
+
 const AuthorModify = () => {
   const [id, setId] = useState();
   const [name, setName] = useState();

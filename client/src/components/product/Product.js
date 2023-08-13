@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 //Context
+import { like } from "../../api/ApiUser";
 import { UserContext } from "../../context/UserContext";
 //Icon
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -39,31 +40,6 @@ const Product = (props) => {
     },
   };
 
-  const like = async (e) => {
-    if (!getToken()) {
-      navigate("/sign/signin");
-      return;
-    }
-    if (!isLiked) {
-      axios(likeConfig)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      axios(dislikeConfig)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    setIsLiked(!isLiked);
-  };
-
   return (
     <div className="product-card-container">
       <div
@@ -86,9 +62,31 @@ const Product = (props) => {
             <button>SEE MORE</button>
           </Link>
           {!getToken() || !isLiked ? (
-            <FavoriteBorderIcon onClick={(e) => like(e)} />
+            <FavoriteBorderIcon
+              onClick={(e) =>
+                like(
+                  navigate,
+                  getToken()?.id,
+                  isLiked,
+                  likeConfig,
+                  dislikeConfig,
+                  setIsLiked
+                )
+              }
+            />
           ) : (
-            <FavoriteIcon onClick={(e) => like(e)} />
+            <FavoriteIcon
+              onClick={(e) =>
+                like(
+                  navigate,
+                  getToken()?.id,
+                  isLiked,
+                  likeConfig,
+                  dislikeConfig,
+                  setIsLiked
+                )
+              }
+            />
           )}
         </div>
       </div>
