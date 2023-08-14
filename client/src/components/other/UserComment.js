@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 //Api
 import { get } from "../../api/ApiManga";
-import * as url from "url";
+//Icons
+import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
+import { deleteComment } from "../../api/ApiUser";
 
 const UserComment = (props) => {
   const [collection, setCollection] = useState();
@@ -45,7 +48,14 @@ const UserComment = (props) => {
     }
   }, [collection?.type_id]);
 
-  console.log(type);
+  const config = {
+    method: "delete",
+    url: "http://localhost:3002/commentary",
+    data: {
+      type: "mangas",
+      comment_id: props.comment_id,
+    },
+  };
 
   return (
     <div className="user-comment">
@@ -64,7 +74,10 @@ const UserComment = (props) => {
               </div>
             </div>
           </div>
-          <div className="user-comment-bottom">{props.commentary}</div>
+          <div className="user-comment-middle">{props.commentary}</div>
+          <div className="user-comment-bottom">
+            <DeleteIcon onClick={() => deleteComment(config)} />
+          </div>
         </>
       )}
     </div>

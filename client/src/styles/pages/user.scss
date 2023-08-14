@@ -178,11 +178,23 @@
         display: flex;
       }
 
-      .user-comment-bottom {
+      .user-comment-middle {
         margin-top: 10px;
         font-size: 15px;
         color: $text-color;
         width: 100%;
+      }
+
+      .user-comment-bottom {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 100%;
+        color: #ffffff;
+
+        svg {
+          cursor: pointer;
+        }
       }
 
       .user-comment-image {

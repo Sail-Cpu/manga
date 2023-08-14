@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const BASE_LINK = "http://localhost:3002";
 
@@ -71,4 +70,14 @@ export const UserCommentary = async (
     { title: title, commentary: commentary, user_id: user_id },
   ]);
   setToggleCommentaryForm(false);
+};
+
+export const deleteComment = async (config) => {
+  axios(config)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

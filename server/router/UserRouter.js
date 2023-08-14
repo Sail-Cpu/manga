@@ -57,6 +57,7 @@ router.get(`/users/:userID`, async (req, res) => {
     });
     const mangaCommentIds = mangasCommentaryResult.rows.map((row) => {
       return {
+        comment_id: row.commentary_id,
         manga_Id: row.manga_id,
         title: row.title,
         commentary: row.commentary,
@@ -239,6 +240,28 @@ router.get("/commentary/:productId", async (req, res) => {
     pool.query(queryComment, [productId], (error, result) => {
       if (error) throw error;
       res.status(200).send({ data: result.rows });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+router.delete("/commentary", async (req, res) => {
+  try {
+    const { type, comment_id } = req.body;
+    let deleteComment = "";
+    if (type === "collections") {
+      console.log(type + " " + comment_id);
+      deleteComment =
+        "delete from user_collection_commentary where commentary_id=$1;";
+    } else if (type === "mangas") {
+      deleteComment =
+        "delete from user_manga_commentary where commentary_id=$1;";
+    }
+    pool.query(deleteComment, [comment_id], (error, result) => {
+      if (error) throw error;
+      res.status(200).send({ message: "comment" });
     });
   } catch (error) {
     console.log(error);

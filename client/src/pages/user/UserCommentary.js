@@ -45,7 +45,6 @@ const UserCommentary = () => {
   useEffect(() => {
     User.fetchUserById(getToken()?.id)
       .then((response) => {
-        console.log(response);
         let mangaComment = response.mangaComment;
         for (let i = 0; i < mangaComment.length; i++) {
           get
@@ -87,6 +86,7 @@ const UserCommentary = () => {
                 name={comment.data.name}
                 title={comment.comment.title}
                 commentary={comment.comment.commentary}
+                comment_id={comment.comment.comment_id}
                 key={i}
               />
             ))}
