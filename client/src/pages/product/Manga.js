@@ -4,12 +4,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 //Api
 import { get } from "../../api/ApiManga";
-import { User, like } from "../../api/ApiUser";
+import {
+  User,
+  like,
+  addToUserCollection,
+  dropToUserCollection,
+} from "../../api/ApiUser";
 //Icons
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Stars from "../../components/other/Stars";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import axios from "axios";
+//Components
 import Commentary from "../../components/other/Commentary";
 
 const Manga = () => {
@@ -18,6 +24,7 @@ const Manga = () => {
   const navigate = useNavigate();
 
   const [isLiked, setIsLiked] = useState(false);
+  const [isInCollection, setIsInCollection] = useState(false);
 
   useEffect(() => {
     if (getToken()) {
@@ -25,6 +32,10 @@ const Manga = () => {
         .then((response) => {
           if (response.mangasLikes.includes(parseInt(mangaId))) {
             setIsLiked(true);
+          }
+          if (response.myCollection.includes(parseInt(mangaId))) {
+            console.log(true);
+            setIsInCollection(true);
           }
         })
         .catch((error) => {
@@ -108,6 +119,36 @@ const Manga = () => {
     },
   };
 
+  const addToCollectionConfig = {
+    method: "post",
+    url: "http://localhost:3002/addtocollection",
+    data: {
+      user_id: getToken()?.id,
+      manga_id: mangaId,
+    },
+  };
+
+  const droptoCollectionConfig = {
+    method: "delete",
+    url: "http://localhost:3002/addtocollection",
+    data: {
+      user_id: getToken()?.id,
+      manga_id: mangaId,
+    },
+  };
+
+  const addToCollection = () => {
+    if (!getToken()) {
+      navigate("/sign/signin");
+      return;
+    }
+    if (isInCollection) {
+      dropToUserCollection(droptoCollectionConfig, setIsInCollection);
+    } else {
+      addToUserCollection(addToCollectionConfig, setIsInCollection);
+    }
+  };
+
   return (
     <div className="manga-container">
       {manga && collection && author && type && (
@@ -156,7 +197,23 @@ const Manga = () => {
                     }
                   />
                 )}
-                <Stars />
+                {isInCollection ? (
+                  <div
+                    className="add-to-collection"
+                    onClick={() => addToCollection()}
+                  >
+                    <RemoveIcon />
+                    <h1>Drop To Collection</h1>
+                  </div>
+                ) : (
+                  <div
+                    className="add-to-collection"
+                    onClick={() => addToCollection()}
+                  >
+                    <AddIcon />
+                    <h1>Add To Collection</h1>
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -23,11 +23,12 @@ router.get(`/users/:userID`, async (req, res) => {
       "SELECT collection_id FROM user_collection_likes WHERE user_id = $1";
     const queryMangasLikes =
       "SELECT manga_id FROM user_manga_likes WHERE user_id = $1";
-
     const queryCollectionsComment =
       "SELECT * FROM user_collection_commentary WHERE user_id = $1";
     const queryMangasLikesComment =
       "SELECT * FROM user_manga_commentary WHERE user_id = $1";
+    const queryMangasCollection =
+      "SELECT * FROM user_my_collection WHERE user_id = $1";
 
     const userResult = await pool.query(queryUser, [userID]);
     const collectionsLikesResult = await pool.query(queryCollectionsLikes, [
@@ -41,10 +42,16 @@ router.get(`/users/:userID`, async (req, res) => {
     const mangasCommentaryResult = await pool.query(queryMangasLikesComment, [
       userID,
     ]);
+    const userMyCollectionResult = await pool.query(queryMangasCollection, [
+      userID,
+    ]);
 
     const user = userResult.rows[0];
     const collectionLikesIds = collectionsLikesResult.rows.map(
       (row) => row.collection_id,
+    );
+    const mangaMyCollectionIds = userMyCollectionResult.rows.map(
+      (row) => row.manga_id,
     );
     const mangaLikesIds = mangasLikesResult.rows.map((row) => row.manga_id);
 
@@ -70,6 +77,7 @@ router.get(`/users/:userID`, async (req, res) => {
       mangasLikes: mangaLikesIds,
       collectionComment: collectionCommentIds,
       mangaComment: mangaCommentIds,
+      myCollection: mangaMyCollectionIds,
     });
   } catch (error) {
     console.log(error);
@@ -252,7 +260,6 @@ router.delete("/commentary", async (req, res) => {
     const { type, comment_id } = req.body;
     let deleteComment = "";
     if (type === "collections") {
-      console.log(type + " " + comment_id);
       deleteComment =
         "delete from user_collection_commentary where commentary_id=$1;";
     } else if (type === "mangas") {
@@ -262,6 +269,35 @@ router.delete("/commentary", async (req, res) => {
     pool.query(deleteComment, [comment_id], (error, result) => {
       if (error) throw error;
       res.status(200).send({ message: "comment" });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+router.post("/addtocollection", async (req, res) => {
+  try {
+    const { user_id, manga_id } = req.body;
+    let insert = "insert into user_my_collection values($1, $2);";
+    pool.query(insert, [user_id, manga_id], (error, result) => {
+      if (error) throw error;
+      res.status(200).send({ message: "add to collection" });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+router.delete("/addtocollection", async (req, res) => {
+  try {
+    const { user_id, manga_id } = req.body;
+    let drop =
+      "delete from user_my_collection where user_id=$1 and manga_id=$2;";
+    pool.query(drop, [user_id, manga_id], (error, result) => {
+      if (error) throw error;
+      res.status(200).send({ message: "add to collection" });
     });
   } catch (error) {
     console.log(error);

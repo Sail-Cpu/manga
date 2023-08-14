@@ -81,3 +81,25 @@ export const deleteComment = async (config) => {
       console.log(error);
     });
 };
+
+export const addToUserCollection = async (config, setIsInCollection) => {
+  axios(config)
+    .then((response) => {
+      console.log(response);
+      setIsInCollection(true);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const dropToUserCollection = async (config, setIsInCollection) => {
+  axios(config)
+    .then((response) => {
+      console.log(response);
+      setIsInCollection(false);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
