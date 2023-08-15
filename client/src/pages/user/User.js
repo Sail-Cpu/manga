@@ -5,6 +5,7 @@ import UserNav from "../../components/navigation/UserNav";
 import UserInfo from "./UserInfo";
 import UserLikes from "./UserLikes";
 import UserCommentary from "./UserCommentary";
+import UserMyCollection from "./UserMyCollection";
 
 const User = () => {
   const { getToken } = useContext(UserContext);
@@ -28,6 +29,7 @@ const User = () => {
         )}
         {activeTab === "likes" && <UserLikes />}
         {activeTab === "commentary" && <UserCommentary />}
+        {activeTab === "my collection" && <UserMyCollection />}
       </div>
     </div>
   );
