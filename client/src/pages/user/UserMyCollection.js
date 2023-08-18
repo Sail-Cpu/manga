@@ -13,55 +13,58 @@ const UserMyCollection = () => {
   const [collectionManga, setCollectionManga] = useState([]);
 
   useEffect(() => {
-    User.fetchUserById(getToken()?.id)
-      .then((userResponse) => {
-        const myCollection = userResponse.myCollection;
-        const fetchPromises = [];
+    if (getToken()) {
+      User.fetchUserById(getToken()?.id)
+        .then((userResponse) => {
+          const myCollection = userResponse.myCollection;
+          const fetchPromises = [];
 
-        for (let i = 0; i < myCollection.length; i++) {
-          const fetchPromise = get
-            .fetchMangasById(myCollection[i])
-            .then((mangaResponse) => {
-              return mangaResponse.data[0];
-            })
-            .catch((error) => {
-              console.log(error);
-              return null;
-            });
-          fetchPromises.push(fetchPromise);
-        }
-        Promise.all(fetchPromises).then((allResponses) => {
-          setAllCollection(
-            allResponses.filter((response) => response !== null)
-          );
+          for (let i = 0; i < myCollection.length; i++) {
+            const fetchPromise = get
+              .fetchMangasById(myCollection[i])
+              .then((mangaResponse) => {
+                return mangaResponse.data[0];
+              })
+              .catch((error) => {
+                console.log(error);
+                return null;
+              });
+            fetchPromises.push(fetchPromise);
+          }
+          Promise.all(fetchPromises).then((allResponses) => {
+            setAllCollection(
+              allResponses.filter((response) => response !== null)
+            );
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    }
+  }, [getToken]);
 
   useEffect(() => {
-    const updatedCollectionManga = [...collectionManga];
-
-    allCollection.forEach((manga) => {
-      const contientElement = updatedCollectionManga.find(
-        (item) => item.collect_id === manga.collection_id
-      );
-      if (!contientElement) {
-        updatedCollectionManga.push({
-          collect_id: manga.collection_id,
-          mangas: [manga],
-        });
-      } else {
-        const index = updatedCollectionManga.findIndex(
+    if (collectionManga) {
+      const updatedCollectionManga = [...collectionManga];
+      allCollection.forEach((manga) => {
+        const contientElement = updatedCollectionManga.find(
           (item) => item.collect_id === manga.collection_id
         );
-        updatedCollectionManga[index].mangas.push(manga);
-      }
-    });
+        if (!contientElement) {
+          updatedCollectionManga.push({
+            collect_id: manga.collection_id,
+            mangas: [manga],
+          });
+        } else {
+          const index = updatedCollectionManga.findIndex(
+            (item) => item.collect_id === manga.collection_id
+          );
+          updatedCollectionManga[index].mangas.push(manga);
+        }
+      });
 
-    setCollectionManga(updatedCollectionManga);
+      setCollectionManga(updatedCollectionManga);
+    }
   }, [allCollection]);
 
   return (

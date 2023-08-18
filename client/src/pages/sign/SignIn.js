@@ -70,6 +70,9 @@ const SignIn = () => {
           <SubmitButton name="Sign In" />
         </div>
         <div className="form-error">{error}</div>
+        <div className="sign-link">
+          <button onClick={() => navigate("/sign/signup")}>SIGN UP</button>
+        </div>
       </form>
     </div>
   );

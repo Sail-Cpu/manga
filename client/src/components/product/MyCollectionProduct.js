@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { get } from "../../api/ApiManga";
 //Components
 import MyCollectionManga from "./MyCollectionManga";
+import { useNavigate } from "react-router-dom";
 
 const MyCollectionProduct = (props) => {
   const [collection, setCollection] = useState({});
@@ -13,6 +14,8 @@ const MyCollectionProduct = (props) => {
   });
   const [collectMangaPercentage, setCollectMangaPercentage] = useState(0);
   const [toggleMangas, setToggleMangas] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (props.collectionManga?.collect_id) {
@@ -89,7 +92,9 @@ const MyCollectionProduct = (props) => {
               </div>
             </div>
             <div className="my-collection-product-bottom">
-              <button>All Collection</button>
+              <button onClick={() => navigate(`/collections/${collection.id}`)}>
+                All Collection
+              </button>
               <button onClick={() => setToggleMangas(!toggleMangas)}>
                 My Collection
               </button>
@@ -102,7 +107,7 @@ const MyCollectionProduct = (props) => {
                 style={{ width: `${collectMangaPercentage}%` }}
               ></div>
             </div>
-            <h1>100%</h1>
+            <h1>{parseInt(collectMangaPercentage)}%</h1>
           </div>
         </div>
       )}

@@ -12,13 +12,12 @@ import Menu_Icon from "../../assets/img/menu_icon.png";
 const NavBar = (props) => {
   const tabs = [
     { first: "HOME", other: [], path: "/" },
-    { first: "MANGAS", other: ["TYPE", "CATEGORY", "NOUVEAUTES"] },
-    { first: "MOVIES", other: ["TYPE", "CATEGORY", "NOUVEAUTES"] },
-    { first: "ANIMES", other: ["TYPE", "CATEGORY", "NOUVEAUTES"] },
-    { first: "ALL PRODUCTS", other: [] },
+    { first: "MANGAS", other: ["TYPE", "CATEGORY", "COLLECTIONS"] },
+    { first: "NOUVEAUTES", other: [] },
+    { first: "ALL MANGAS", other: [] },
   ];
 
-  const { user, getToken } = useContext(UserContext);
+  const { getToken } = useContext(UserContext);
 
   return (
     <>
@@ -41,7 +40,6 @@ const NavBar = (props) => {
                 </Link>
               );
             })}
-            <Tabs name="DATA FORM" submenu={[]} />
             <div className="user-tab-container">
               {getToken() && (
                 <Link to="/user">

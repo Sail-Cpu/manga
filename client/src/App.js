@@ -10,6 +10,7 @@ import SignIn from "./pages/sign/SignIn";
 import SignUp from "./pages/sign/SignUp";
 import Type from "./pages/list/Type";
 import User from "./pages/user/User";
+import AllMangas from "./pages/list/AllMangas";
 //Components
 import NavBar from "./components/navigation/NavBar";
 import { UserContext } from "./context/UserContext";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/dataform" element={<DataForm />} />
           <Route path="/types/:typeID" element={<Type />} />
           <Route path="/collections/:collectionId" element={<Collection />} />
+          <Route path="/allmangas/:allMangaPage" element={<AllMangas />} />
           <Route path="/mangas/:mangaId" element={<Manga />} />
           <Route path="/category/:categoryID" element={<Category />} />
           <Route path="/sign/signin" element={<SignIn />} />

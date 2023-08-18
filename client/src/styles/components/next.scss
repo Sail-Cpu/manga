@@ -1,0 +1,17 @@
+@import "../colors";
+
+.next-container {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .next-button {
+    padding: 3px 10px;
+    background: none;
+    border: 3px solid $secondary-color;
+    color: $text-color;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
