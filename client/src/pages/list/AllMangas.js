@@ -13,30 +13,41 @@ const AllMangas = () => {
 
   const [allMangas, setAllMangas] = useState([]);
   const [page, setPage] = useState(0);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     get
-      .fetchMangas("", allMangaPage)
+      .fetchMangas("", allMangaPage > 0 ? allMangaPage - 1 : 0, search)
       .then((response) => {
         setAllMangas(response.data);
-        setPage(parseInt(response.nbMangas / 100));
+        setPage(search.length > 0 ? 0 : parseInt(response.nbMangas / 100));
         window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [allMangaPage]);
+  }, [allMangaPage, search]);
 
   return (
     <div className="all-product all-mangas">
       <div className="all-product-top">
         <div className="all-product-search-container">
-          <input type="text" className="all-product-search" />
+          <input
+            value={search}
+            type="text"
+            className="all-product-search"
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <SearchIcon />
         </div>
       </div>
       <ProductList datas={allMangas} path="/mangas/" />
-      <Next page={page} allMangaPage={parseInt(allMangaPage)} />
+      {page > 1 && (
+        <Next
+          page={page}
+          allMangaPage={parseInt(allMangaPage > 0 ? allMangaPage : 1)}
+        />
+      )}
     </div>
   );
 };
