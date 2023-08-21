@@ -7,6 +7,7 @@ import ProductList from "../../components/list/ProductList";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { UserContext } from "../../context/UserContext";
 import axios from "axios";
+import Next from "../../components/navigation/Next";
 
 const Collection = () => {
   const { collectionId } = useParams();
@@ -19,6 +20,7 @@ const Collection = () => {
   const [author, setAuthor] = useState();
   const [type, setType] = useState();
   const [mangasList, setMangaList] = useState();
+  const pageSize = 1000;
 
   const [delimited, setDelimited] = useState(true);
 
@@ -83,7 +85,7 @@ const Collection = () => {
   useEffect(() => {
     if (collection?.id) {
       get
-        .fetchMangas(collection.id, "", "")
+        .fetchMangas(collection.id, "", "", pageSize)
         .then((response) => {
           setMangaList(response.data);
         })

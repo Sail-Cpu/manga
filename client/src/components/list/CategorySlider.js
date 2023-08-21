@@ -39,7 +39,7 @@ const CategorySlider = () => {
               onMouseOver={() => setActive(idx)}
               onMouseLeave={() => setActive(-1)}
             >
-              <Link to={`/category/${category.id}`}>
+              <Link to={`/category/${category.id}/0`}>
                 <CategorySlide
                   name={category.name}
                   japanName={category.japan_name}

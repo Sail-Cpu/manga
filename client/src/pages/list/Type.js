@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { get } from "../../api/ApiManga";
 import { useParams } from "react-router-dom";
 import ProductList from "../../components/list/ProductList";
+import Next from "../../components/navigation/Next";
 
 const Type = () => {
-  const { typeID } = useParams();
+  const { typeID, typePage } = useParams();
   const [type, setType] = useState();
   const [collections, setCollections] = useState();
+  const [page, setPage] = useState(0);
+  const pageSize = 50;
 
   useEffect(() => {
     get
@@ -18,18 +21,20 @@ const Type = () => {
         console.log(error);
       });
     get
-      .fetchCollections(typeID, "", "")
+      .fetchCollections(typeID, typePage, "", pageSize)
       .then((response) => {
         setCollections(response.data);
+        setPage(Math.ceil(response.nbCollections / pageSize));
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [typeID]);
+  }, [typeID, typePage]);
 
   return (
     <div className="type-page-container">
-      {type && (
+      {type && collections && (
         <>
           <div className="type-page-container-left">
             <div className="type-page-container-title">
@@ -46,9 +51,12 @@ const Type = () => {
               {type.japan_name}
             </div>
           </div>
-          {collections && (
-            <ProductList datas={collections} path="/collections/" />
-          )}
+          <ProductList datas={collections} path="/collections/" />
+          <Next
+            page={page}
+            allMangaPage={parseInt(typePage)}
+            path={`/types/${typeID}`}
+          />
         </>
       )}
     </div>

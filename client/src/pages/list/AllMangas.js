@@ -14,23 +14,29 @@ const AllMangas = () => {
   const [allMangas, setAllMangas] = useState([]);
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
+  const pageSize = 100;
 
   useEffect(() => {
     get
       .fetchMangas(
         "",
         search.length === 0 && allMangaPage > 0 ? allMangaPage - 1 : 0,
-        search
+        search,
+        pageSize
       )
       .then((response) => {
         setAllMangas(response.data);
-        setPage(search.length > 0 ? 0 : parseInt(response.nbMangas / 100) + 1);
+        setPage(
+          search.length > 0 ? 0 : Math.ceil(response.nbMangas / pageSize)
+        );
         window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [allMangaPage, search]);
+
+  console.log(page);
 
   return (
     <div className="all-product all-mangas">
@@ -48,7 +54,7 @@ const AllMangas = () => {
       <ProductList datas={allMangas} path="/mangas/" />
       <Next
         page={page}
-        allMangaPage={parseInt(allMangaPage > 0 ? allMangaPage : 1)}
+        allMangaPage={parseInt(allMangaPage)}
         path="/allmangas"
       />
     </div>

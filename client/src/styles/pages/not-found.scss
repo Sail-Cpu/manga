@@ -1,0 +1,12 @@
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+
+  .not-found-anim {
+    width: 600px;
+    height: 600px;
+  }
+}

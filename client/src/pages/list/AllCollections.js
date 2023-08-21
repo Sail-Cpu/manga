@@ -13,6 +13,7 @@ const AllCollections = () => {
   const [allCollections, setAllCollections] = useState([]);
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
+  const pageSize = 10;
 
   useEffect(() => {
     get
@@ -21,12 +22,13 @@ const AllCollections = () => {
         search.length === 0 && allCollectionPage > 0
           ? allCollectionPage - 1
           : 0,
-        search
+        search,
+        pageSize
       )
       .then((response) => {
         setAllCollections(response.data);
         setPage(
-          search.length > 0 ? 0 : parseInt(response.nbCollections / 10) + 1
+          search.length > 0 ? 0 : Math.ceil(response.nbCollections / pageSize)
         );
         window.scrollTo(0, 0);
       })
@@ -55,7 +57,7 @@ const AllCollections = () => {
       </div>
       <Next
         page={page}
-        allMangaPage={parseInt(allCollectionPage > 0 ? allCollectionPage : 1)}
+        allMangaPage={parseInt(allCollectionPage)}
         path="/allcollections"
       />
     </div>

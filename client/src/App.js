@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+//Context
+import { UserContext } from "./context/UserContext";
 //Pages
 import Home from "./pages/Home";
 import DataForm from "./pages/api_form/DataForm";
@@ -11,10 +13,10 @@ import SignUp from "./pages/sign/SignUp";
 import Type from "./pages/list/Type";
 import User from "./pages/user/User";
 import AllMangas from "./pages/list/AllMangas";
+import AllCollections from "./pages/list/AllCollections";
+import NotFound from "./pages/other/NotFound";
 //Components
 import NavBar from "./components/navigation/NavBar";
-import { UserContext } from "./context/UserContext";
-import AllCollections from "./pages/list/AllCollections";
 
 function App() {
   const [activeNav, setActiveNav] = useState(false);
@@ -28,18 +30,22 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dataform" element={<DataForm />} />
-          <Route path="/types/:typeID" element={<Type />} />
-          <Route path="/collections/:collectionId" element={<Collection />} />
+          <Route path="/types/:typeID/:typePage" element={<Type />} />
+          <Route path="/collections/:collectionId/" element={<Collection />} />
           <Route path="/allmangas/:allMangaPage" element={<AllMangas />} />
           <Route
             path="/allCollections/:allCollectionPage"
             element={<AllCollections />}
           />
           <Route path="/mangas/:mangaId" element={<Manga />} />
-          <Route path="/category/:categoryID" element={<Category />} />
+          <Route
+            path="/category/:categoryID/:categoryPage"
+            element={<Category />}
+          />
           <Route path="/sign/signin" element={<SignIn />} />
           <Route path="/sign/signup" element={<SignUp />} />
           {getToken() && <Route path="/user" element={<User />}></Route>}
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
     </div>

@@ -14,6 +14,7 @@ const CollectionProduct = (props) => {
     width: 0,
     number: 0,
   });
+  const pageSize = 100;
 
   useEffect(() => {
     get
@@ -39,7 +40,7 @@ const CollectionProduct = (props) => {
 
   useEffect(() => {
     get
-      .fetchMangas(props.collection.id, "", "")
+      .fetchMangas(props.collection.id, "", "", pageSize)
       .then((response) => {
         setMangas(response.data);
       })

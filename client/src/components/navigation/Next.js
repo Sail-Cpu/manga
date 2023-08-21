@@ -7,11 +7,11 @@ const Next = (props) => {
     links[0] = 1;
     if (props.page > 6) {
       if (props.allMangaPage > 3 && props.allMangaPage > props.page - 3) {
-        links[1] = props.page - 5;
-        links[2] = props.page - 4;
-        links[3] = props.page - 3;
-        links[4] = props.page - 2;
-        links[5] = props.page - 1;
+        links[1] = props.page - 4;
+        links[2] = props.page - 3;
+        links[3] = props.page - 2;
+        links[4] = props.page - 1;
+        links[5] = props.page;
       } else if (props.allMangaPage > 3) {
         links[1] = props.allMangaPage - 2;
         links[2] = props.allMangaPage - 1;
@@ -25,7 +25,7 @@ const Next = (props) => {
         links[4] = 5;
         links[5] = 6;
       }
-      links[6] = props.page;
+      links[6] = props.page + 1;
     } else {
       for (let i = 1; i < props.page; i++) {
         links[i] = i + 1;
@@ -39,11 +39,12 @@ const Next = (props) => {
       {props.page > 1 &&
         allLink().map((link, idx) => {
           return (
-            <Link key={idx} to={`${props.path}/${link}`}>
+            <Link key={idx} to={`${props.path}/${link - 1}`}>
               <button
                 className="next-button"
                 style={{
-                  backgroundColor: props.allMangaPage == link ? "#798B91" : "",
+                  backgroundColor:
+                    props.allMangaPage === link - 1 ? "#798B91" : "",
                 }}
               >
                 {link}

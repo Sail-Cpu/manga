@@ -5,11 +5,14 @@ import { get } from "../../api/ApiManga";
 import CategorySlide from "../../components/product/CategorySlide";
 import { useParams } from "react-router-dom";
 import ProductList from "../../components/list/ProductList";
+import Next from "../../components/navigation/Next";
 
 const Category = () => {
-  const { categoryID } = useParams();
+  const { categoryID, categoryPage } = useParams();
   const [category, setCategory] = useState();
   const [allCollections, setAllCollections] = useState();
+  const [page, setPage] = useState(0);
+  const pageSize = 40;
 
   useEffect(() => {
     get
@@ -24,9 +27,10 @@ const Category = () => {
 
   useEffect(() => {
     get
-      .fetchCollectionsByCategory(categoryID)
+      .fetchCollectionsByCategory(categoryID, page, pageSize)
       .then((response) => {
         setAllCollections(response.data);
+        setPage(Math.ceil(response.nbCollections / pageSize));
       })
       .catch((error) => {
         console.log(error);
@@ -45,6 +49,11 @@ const Category = () => {
             />
           </div>
           <ProductList datas={allCollections} path="/collections/" />
+          <Next
+            page={page}
+            allMangaPage={parseInt(categoryPage)}
+            path={`/category/${categoryID}/${categoryPage}`}
+          />
         </>
       )}
     </div>

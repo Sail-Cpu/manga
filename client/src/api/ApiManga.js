@@ -27,8 +27,8 @@ export const get = {
       await axios.get(endpoint)
     ).data;
   },
-  fetchCollections: async (type, page, search) => {
-    const endpoint = `${BASE_LINK}/collections?type=${type}&page_size=10&page=${page}&search=${search}`;
+  fetchCollections: async (type, page, search, pageSize) => {
+    const endpoint = `${BASE_LINK}/collections?type=${type}&page_size=${pageSize}&page=${page}&search=${search}`;
     return await (
       await axios.get(endpoint)
     ).data;
@@ -39,14 +39,14 @@ export const get = {
       await axios.get(endpoint)
     ).data;
   },
-  fetchCollectionsByCategory: async (category) => {
-    const endpoint = `${BASE_LINK}/collections?category=${category}&page_size=80`;
+  fetchCollectionsByCategory: async (category, page, pageSize) => {
+    const endpoint = `${BASE_LINK}/collections?category=${category}&page=${page}&page_size=${pageSize}`;
     return await (
       await axios.get(endpoint)
     ).data;
   },
-  fetchMangas: async (collection, page, search) => {
-    const endpoint = `${BASE_LINK}/mangas?collection=${collection}&page_size=100&page=${page}&search=${search}`;
+  fetchMangas: async (collection, page, search, pageSize) => {
+    const endpoint = `${BASE_LINK}/mangas?collection=${collection}&page_size=${pageSize}&page=${page}&search=${search}`;
     return await (
       await axios.get(endpoint)
     ).data;
