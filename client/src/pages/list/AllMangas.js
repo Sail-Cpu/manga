@@ -17,10 +17,14 @@ const AllMangas = () => {
 
   useEffect(() => {
     get
-      .fetchMangas("", allMangaPage > 0 ? allMangaPage - 1 : 0, search)
+      .fetchMangas(
+        "",
+        search.length === 0 && allMangaPage > 0 ? allMangaPage - 1 : 0,
+        search
+      )
       .then((response) => {
         setAllMangas(response.data);
-        setPage(search.length > 0 ? 0 : parseInt(response.nbMangas / 100));
+        setPage(search.length > 0 ? 0 : parseInt(response.nbMangas / 100) + 1);
         window.scrollTo(0, 0);
       })
       .catch((error) => {
@@ -42,12 +46,11 @@ const AllMangas = () => {
         </div>
       </div>
       <ProductList datas={allMangas} path="/mangas/" />
-      {page > 1 && (
-        <Next
-          page={page}
-          allMangaPage={parseInt(allMangaPage > 0 ? allMangaPage : 1)}
-        />
-      )}
+      <Next
+        page={page}
+        allMangaPage={parseInt(allMangaPage > 0 ? allMangaPage : 1)}
+        path="/allmangas"
+      />
     </div>
   );
 };

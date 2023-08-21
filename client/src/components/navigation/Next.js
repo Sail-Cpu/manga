@@ -34,24 +34,23 @@ const Next = (props) => {
     return links;
   };
 
-  console.log(allLink());
-
   return (
     <div className="next-container">
-      {allLink().map((link, idx) => {
-        return (
-          <Link to={`/allMangas/${link}`}>
-            <button
-              className="next-button"
-              style={{
-                backgroundColor: props.allMangaPage == link ? "#798B91" : "",
-              }}
-            >
-              {link}
-            </button>
-          </Link>
-        );
-      })}
+      {props.page > 1 &&
+        allLink().map((link, idx) => {
+          return (
+            <Link key={idx} to={`${props.path}/${link}`}>
+              <button
+                className="next-button"
+                style={{
+                  backgroundColor: props.allMangaPage == link ? "#798B91" : "",
+                }}
+              >
+                {link}
+              </button>
+            </Link>
+          );
+        })}
     </div>
   );
 };

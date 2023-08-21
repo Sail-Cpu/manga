@@ -1,8 +1,6 @@
 import React from "react";
 
 const MyCollectionManga = (props) => {
-  console.log(props.manga);
-
   return (
     <div className="my-collection-manga">
       <div

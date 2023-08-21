@@ -18,7 +18,7 @@ const Type = () => {
         console.log(error);
       });
     get
-      .fetchCollections(typeID)
+      .fetchCollections(typeID, "", "")
       .then((response) => {
         setCollections(response.data);
       })

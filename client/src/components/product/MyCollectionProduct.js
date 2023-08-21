@@ -33,7 +33,7 @@ const MyCollectionProduct = (props) => {
   useEffect(() => {
     if (props.collectionManga?.collect_id) {
       get
-        .fetchMangas(props.collectionManga?.collect_id)
+        .fetchMangas(props.collectionManga?.collect_id, "", "")
         .then((response) => {
           setCollectManga((prevState) => ({
             myMangas: [...prevState.myMangas, props.collectionManga?.mangas],
@@ -65,6 +65,7 @@ const MyCollectionProduct = (props) => {
         (collectManga?.myMangas[0].length * 100) /
           collectManga?.allManga[0].length
       );
+      console.log(collectManga);
     }
   }, [collectManga?.myMangas[0]]);
 

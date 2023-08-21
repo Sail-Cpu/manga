@@ -14,6 +14,7 @@ import AllMangas from "./pages/list/AllMangas";
 //Components
 import NavBar from "./components/navigation/NavBar";
 import { UserContext } from "./context/UserContext";
+import AllCollections from "./pages/list/AllCollections";
 
 function App() {
   const [activeNav, setActiveNav] = useState(false);
@@ -30,6 +31,10 @@ function App() {
           <Route path="/types/:typeID" element={<Type />} />
           <Route path="/collections/:collectionId" element={<Collection />} />
           <Route path="/allmangas/:allMangaPage" element={<AllMangas />} />
+          <Route
+            path="/allCollections/:allCollectionPage"
+            element={<AllCollections />}
+          />
           <Route path="/mangas/:mangaId" element={<Manga />} />
           <Route path="/category/:categoryID" element={<Category />} />
           <Route path="/sign/signin" element={<SignIn />} />
