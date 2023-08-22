@@ -305,8 +305,43 @@ router.delete("/addtocollection", async (req, res) => {
   }
 });
 
-router.get("/collections/:mangaId", async (req, res) => {
+router.patch("/user", async (req, res) => {
   try {
+    const { user_id, mail, password, confirmPassword } = req.body;
+    //const testString = /^[a-zA-Z0-9_]+$/;
+    const testMaj = /[A-Z]/;
+
+    if (mail.length > 0) {
+      let updatePassword = "UPDATE users SET email=$1 where id=$2;";
+      pool.query(updatePassword, [mail, user_id], (error, result) => {
+        if (error) throw error;
+        res.status(200).send({ message: "Email Change successfully" });
+      });
+    }
+
+    if (password.length > 0) {
+      if (password.length < 7 || !testMaj.test(password)) {
+        res.status(400).send({
+          error:
+            "Le mot de passe doit contenir au moins une majuscule et 7 caractères.",
+        });
+        return;
+      }
+      if (password !== confirmPassword) {
+        res.status(400).send({
+          error: "Les mot de passe ne sont pas les méme",
+        });
+        return;
+      }
+      bcrypt.hash(password, 10, (err, hash) => {
+        if (err) throw err;
+        let updatePassword = "UPDATE users SET password=$1 where id=$2;";
+        pool.query(updatePassword, [hash, user_id], (error, result) => {
+          if (error) throw error;
+          res.status(200).send({ message: "Password Change successfully" });
+        });
+      });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: "Internal server error" });

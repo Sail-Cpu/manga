@@ -18,10 +18,14 @@ const Comment = (props) => {
     }
   }, [props.datas]);
 
+  console.log(user);
+
   return (
     <div className="comment-container">
       <div className="comment-top">
-        <div className="comment-top-user-image"></div>
+        <div className="comment-top-user-image">
+          {user.pseudo?.[0].toUpperCase()}
+        </div>
         <h3>{user.pseudo}</h3>
       </div>
       <div className="comment-title">

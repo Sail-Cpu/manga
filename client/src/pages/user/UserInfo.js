@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserInfo = (props) => {
   return (
@@ -9,8 +10,10 @@ const UserInfo = (props) => {
       <div className="user-info-right">
         <span>{props.pseudo}</span>
         <span>{props.email}</span>
-        <span style={{ color: "#fff", cursor: "pointer" }}>Modif Info</span>
-        <span style={{ color: "#fff", cursor: "pointer" }}>Get Api Key</span>
+        <Link to="/user/usermodif">
+          <span className="user-info-link">Modif Info</span>
+        </Link>
+        <span className="user-info-link">Get Api Key</span>
       </div>
     </div>
   );

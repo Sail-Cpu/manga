@@ -86,10 +86,25 @@
         display: flex;
         flex-direction: column;
         font-size: 22px;
-        color: $text-color;
+
+        a {
+          margin-bottom: 10px;
+        }
 
         span {
+          color: $text-color;
           margin-bottom: 10px;
+          transition: 0.2s ease;
+        }
+
+        .user-info-link {
+          color: #fff;
+          transition: 0.2s ease;
+          cursor: pointer;
+        }
+
+        .user-info-link:hover {
+          color: $secondary-color;
         }
       }
     }
@@ -369,6 +384,67 @@
     h1 {
       font-size: 19px;
       color: $text-color;
+    }
+  }
+}
+
+.user-modif-page {
+  width: 100%;
+  margin-top: 20px;
+
+  button {
+    background: none;
+    color: $text-color;
+    font-size: 15px;
+    padding: 5px 15px;
+    border: 3px solid $secondary-color;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+
+  .user-modif {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      color: $text-color;
+      font-size: 40px;
+      margin-bottom: 30px;
+    }
+
+    .user-modif-picture {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 100px;
+      color: $primary-color;
+      width: 250px;
+      height: 250px;
+      background-color: $secondary-color;
+    }
+
+    .user-modif-form {
+      margin-top: 10px;
+      width: 330px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        margin: 30px 0 10px 0;
+      }
+    }
+
+    span {
+      margin-bottom: 10px;
     }
   }
 }

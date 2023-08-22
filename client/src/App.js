@@ -12,6 +12,7 @@ import SignIn from "./pages/sign/SignIn";
 import SignUp from "./pages/sign/SignUp";
 import Type from "./pages/list/Type";
 import User from "./pages/user/User";
+import UserModif from "./pages/user/UserModif";
 import AllMangas from "./pages/list/AllMangas";
 import AllCollections from "./pages/list/AllCollections";
 import NotFound from "./pages/other/NotFound";
@@ -45,6 +46,9 @@ function App() {
           <Route path="/sign/signin" element={<SignIn />} />
           <Route path="/sign/signup" element={<SignUp />} />
           {getToken() && <Route path="/user" element={<User />}></Route>}
+          {getToken() && (
+            <Route path="/user/usermodif" element={<UserModif />}></Route>
+          )}
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
