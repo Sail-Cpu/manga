@@ -18,6 +18,7 @@ import AllCollections from "./pages/list/AllCollections";
 import NotFound from "./pages/other/NotFound";
 //Components
 import NavBar from "./components/navigation/NavBar";
+import News from "./pages/list/News";
 
 function App() {
   const [activeNav, setActiveNav] = useState(false);
@@ -50,6 +51,7 @@ function App() {
             <Route path="/user/usermodif" element={<UserModif />}></Route>
           )}
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/news/:newsPage" element={<News />}></Route>
         </Routes>
       </Router>
     </div>

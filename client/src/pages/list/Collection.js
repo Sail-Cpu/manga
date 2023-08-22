@@ -85,7 +85,7 @@ const Collection = () => {
   useEffect(() => {
     if (collection?.id) {
       get
-        .fetchMangas(collection.id, "", "", pageSize)
+        .fetchMangas(collection.id, "", "", pageSize, "")
         .then((response) => {
           setMangaList(response.data);
         })

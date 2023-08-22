@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import axios from "axios";
 //Api
 import { get } from "../../api/ApiManga";
 import { User } from "../../api/ApiUser";

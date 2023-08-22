@@ -34,7 +34,7 @@ const MyCollectionProduct = (props) => {
   useEffect(() => {
     if (props.collectionManga?.collect_id) {
       get
-        .fetchMangas(props.collectionManga?.collect_id, "", "", pageSize)
+        .fetchMangas(props.collectionManga?.collect_id, "", "", pageSize, "")
         .then((response) => {
           setCollectManga((prevState) => ({
             myMangas: [...prevState.myMangas, props.collectionManga?.mangas],

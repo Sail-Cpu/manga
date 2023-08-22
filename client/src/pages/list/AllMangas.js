@@ -22,7 +22,8 @@ const AllMangas = () => {
         "",
         search.length === 0 && allMangaPage > 0 ? allMangaPage - 1 : 0,
         search,
-        pageSize
+        pageSize,
+        ""
       )
       .then((response) => {
         setAllMangas(response.data);
