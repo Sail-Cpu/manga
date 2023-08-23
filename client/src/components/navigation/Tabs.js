@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 //Icons
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -19,9 +20,9 @@ const Tabs = (props) => {
       <ul className="submenu" style={{ display: submenu ? "block" : "none" }}>
         {props.submenu.map((sub, index) => {
           return (
-            <li key={index} className="sub-tabs">
-              {sub}
-            </li>
+            <Link key={index} to={sub.path}>
+              <li className="sub-tabs">{sub.name}</li>
+            </Link>
           );
         })}
       </ul>

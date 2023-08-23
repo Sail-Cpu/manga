@@ -12,9 +12,14 @@ import Menu_Icon from "../../assets/img/menu_icon.png";
 const NavBar = (props) => {
   const tabs = [
     { first: "HOME", other: [], path: "/" },
-    { first: "MANGAS", other: ["TYPE", "CATEGORY", "COLLECTIONS"] },
-    { first: "NOUVEAUTES", other: [] },
-    { first: "ALL MANGAS", other: [] },
+    {
+      first: "MANGAS",
+      other: [
+        { name: "ALL MANGAS", path: "/allmangas/0" },
+        { name: "ALL COLLECTIONS", path: "/allcollections/0" },
+      ],
+    },
+    { first: "NOUVEAUTES", other: [], path: "/news/0" },
   ];
 
   const { getToken } = useContext(UserContext);
