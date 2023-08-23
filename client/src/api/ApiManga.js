@@ -27,20 +27,14 @@ export const get = {
       await axios.get(endpoint)
     ).data;
   },
-  fetchCollections: async (type, page, search, pageSize) => {
-    const endpoint = `${BASE_LINK}/collections?type=${type}&page_size=${pageSize}&page=${page}&search=${search}`;
+  fetchCollections: async (type, category, page, search, pageSize, sort) => {
+    const endpoint = `${BASE_LINK}/collections?type=${type}&category=${category}&page_size=${pageSize}&page=${page}&search=${search}&sort=${sort}`;
     return await (
       await axios.get(endpoint)
     ).data;
   },
   fetchCollection: async (collection) => {
     const endpoint = `${BASE_LINK}/collections/${collection}`;
-    return await (
-      await axios.get(endpoint)
-    ).data;
-  },
-  fetchCollectionsByCategory: async (category, page, pageSize) => {
-    const endpoint = `${BASE_LINK}/collections?category=${category}&page=${page}&page_size=${pageSize}`;
     return await (
       await axios.get(endpoint)
     ).data;

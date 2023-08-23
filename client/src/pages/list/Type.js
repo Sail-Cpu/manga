@@ -21,7 +21,7 @@ const Type = () => {
         console.log(error);
       });
     get
-      .fetchCollections(typeID, typePage, "", pageSize)
+      .fetchCollections(typeID, "", typePage, "", pageSize, "")
       .then((response) => {
         setCollections(response.data);
         setPage(Math.ceil(response.nbCollections / pageSize));

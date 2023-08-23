@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 //Components
 import CollectionProduct from "../../components/list/CollectionProduct";
+import Select from "../../components/api_form/inputs/Select";
 //Icons
 import SearchIcon from "@mui/icons-material/Search";
 import { get } from "../../api/ApiManga";
@@ -15,15 +16,22 @@ const AllCollections = () => {
   const [search, setSearch] = useState("");
   const pageSize = 10;
 
+  const [sort, setSort] = useState("Name");
+  const values = ["Name", "Year", "Critic"];
+
   useEffect(() => {
+    console.log(sort);
+
     get
       .fetchCollections(
+        "",
         "",
         search.length === 0 && allCollectionPage > 0
           ? allCollectionPage - 1
           : 0,
         search,
-        pageSize
+        pageSize,
+        sort
       )
       .then((response) => {
         setAllCollections(response.data);
@@ -35,7 +43,7 @@ const AllCollections = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [allCollectionPage, search]);
+  }, [allCollectionPage, search, sort]);
 
   return (
     <div className="all-product all-collections">
@@ -49,6 +57,7 @@ const AllCollections = () => {
           />
           <SearchIcon />
         </div>
+        <Select name="Filter" values={values} state={setSort} />
       </div>
       <div className="collection-list" key={JSON.stringify(allCollections)}>
         {allCollections.map((collection, idx) => {

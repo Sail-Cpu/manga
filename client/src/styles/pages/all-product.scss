@@ -5,6 +5,8 @@
   padding: 80px;
 
   .all-product-top {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
 
     .all-product-search-container {

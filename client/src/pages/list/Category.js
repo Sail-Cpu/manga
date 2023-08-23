@@ -27,7 +27,7 @@ const Category = () => {
 
   useEffect(() => {
     get
-      .fetchCollectionsByCategory(categoryID, page, pageSize)
+      .fetchCollections("", categoryID, page, "", pageSize, "")
       .then((response) => {
         setAllCollections(response.data);
         setPage(Math.ceil(response.nbCollections / pageSize));
