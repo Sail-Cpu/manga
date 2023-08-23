@@ -40,7 +40,7 @@ const CollectionProduct = (props) => {
 
   useEffect(() => {
     get
-      .fetchMangas(props.collection.id, "", "", pageSize, "")
+      .fetchMangas(props.collection.id, "", "", pageSize, "", "")
       .then((response) => {
         setMangas(response.data);
       })

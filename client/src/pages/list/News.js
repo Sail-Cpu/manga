@@ -16,7 +16,7 @@ const News = () => {
 
   useEffect(() => {
     get
-      .fetchMangas("", newsPage > 0 ? newsPage - 1 : 0, "", pageSize, date)
+      .fetchMangas("", newsPage > 0 ? newsPage - 1 : 0, "", pageSize, date, "")
       .then((response) => {
         setNewMangas(response.data);
         setPage(Math.ceil(response.nbMangas / pageSize));

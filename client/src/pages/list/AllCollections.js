@@ -20,8 +20,6 @@ const AllCollections = () => {
   const values = ["Name", "Year", "Critic"];
 
   useEffect(() => {
-    console.log(sort);
-
     get
       .fetchCollections(
         "",

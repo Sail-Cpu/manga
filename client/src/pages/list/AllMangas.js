@@ -7,6 +7,7 @@ import Next from "../../components/navigation/Next";
 //Icon
 import SearchIcon from "@mui/icons-material/Search";
 import { useParams } from "react-router-dom";
+import Select from "../../components/api_form/inputs/Select";
 
 const AllMangas = () => {
   const { allMangaPage } = useParams();
@@ -16,6 +17,9 @@ const AllMangas = () => {
   const [search, setSearch] = useState("");
   const pageSize = 100;
 
+  const [sort, setSort] = useState("Name");
+  const values = ["Name", "Date"];
+
   useEffect(() => {
     get
       .fetchMangas(
@@ -23,7 +27,8 @@ const AllMangas = () => {
         search.length === 0 && allMangaPage > 0 ? allMangaPage - 1 : 0,
         search,
         pageSize,
-        ""
+        "",
+        sort
       )
       .then((response) => {
         setAllMangas(response.data);
@@ -35,7 +40,7 @@ const AllMangas = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [allMangaPage, search]);
+  }, [allMangaPage, search, sort]);
 
   console.log(page);
 
@@ -51,6 +56,7 @@ const AllMangas = () => {
           />
           <SearchIcon />
         </div>
+        <Select name="Filter" values={values} state={setSort} />
       </div>
       <ProductList datas={allMangas} path="/mangas/" />
       <Next
