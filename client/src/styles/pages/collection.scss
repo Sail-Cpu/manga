@@ -123,3 +123,35 @@
     background-color: $secondary-color;
   }
 }
+
+@media screen and (max-width: 770px) {
+  .collection {
+
+    .collection-head-block-container {
+      width: 100%;
+    }
+
+    .collection-info {
+      flex-direction: column;
+      align-items: center;
+
+      .collection-info-left {
+        width: 100%;
+        border: none;
+
+        .collection-info-bonus {
+          justify-content: center;
+        }
+
+        border-bottom: 4px solid $text-color;
+        margin: 8px;
+      }
+
+      .collection-info-right {
+        width: 100%;
+        border: none;
+        text-align: center;
+      }
+    }
+  }
+}
