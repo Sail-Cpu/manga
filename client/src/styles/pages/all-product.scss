@@ -34,4 +34,17 @@
       width: 90%;
     }
   }
+
+  @media screen and (max-width: 900px) {
+    .all-product-top {
+      flex-direction: column;
+      align-items: center;
+
+      .all-product-search-container {
+        margin-bottom: 20px;
+        width: 100%;
+      }
+    }
+
+  }
 }

@@ -3,6 +3,7 @@
   justify-content: center;
   width: 100%;
 }
+
 .product-list {
   margin-top: 50px;
   display: grid;
@@ -11,4 +12,11 @@
   grid-auto-flow: row;
   grid-gap: 20px 2.5vw;
   width: 90%;
+}
+
+@media screen and (max-width: 560px) {
+  .product-list {
+    display: flex;
+    flex-direction: column;
+  }
 }

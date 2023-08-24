@@ -58,6 +58,19 @@
     border-bottom: 3px solid $secondary-color;
   }
 
+  @media screen and (max-width: 880px) {
+    .user-nav {
+      margin-left: 0;
+      width: 100%;
+      align-items: center;
+      font-size: 3.5vw;
+
+      span {
+        white-space: nowrap;
+      }
+    }
+  }
+
   .user-page-content {
     width: 100%;
 
@@ -105,6 +118,20 @@
 
         .user-info-link:hover {
           color: $secondary-color;
+        }
+      }
+    }
+
+    @media screen and (max-width: 880px) {
+      .user-info {
+        margin-left: 0;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+
+        .user-info-right {
+          margin-top: 20px;
+          align-items: center;
         }
       }
     }
@@ -167,12 +194,37 @@
     }
   }
 
+  @media screen and (max-width: 1150px) {
+    .user-likes {
+      padding: 50px 0px 0 0px;
+
+      .user-likes-title-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6.5vw;
+        padding: 0;
+      }
+    }
+  }
+  @media screen and (max-width: 1150px) {
+    .user-likes {
+      .user-likes-title-container {
+        font-size: 4vw;
+      }
+    }
+  }
+
   .user-commentary-container {
     display: grid;
     width: 100%;
     padding: 20px 100px;
     gap: 20px;
     justify-content: center;
+
+    @media screen and (max-width: 850px) {
+      padding: 20px 20px;
+    }
 
     .user-commentary-column {
       display: flex;
@@ -259,6 +311,9 @@
     }
 
     .user-my-collection-product-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       min-width: 340px;
     }
 
@@ -326,6 +381,7 @@
   .user-my-collection-product-percentage-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 20px;
     width: 100%;
 
@@ -353,6 +409,35 @@
     height: 100%;
     margin: 0 10px;
     padding-top: 55px;
+  }
+
+  @media screen and (max-width: 850px) {
+    .user-my-collection {
+      flex-direction: column;
+      align-items: center;
+
+      .user-my-collection-product-container {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .user-my-collection-product-block {
+        width: 100%;
+      }
+
+      .user-my-collection-product-percentage-container {
+        h1 {
+          display: none;
+        }
+      }
+
+      .user-my-collection-product-mangas-list {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 30px;
+      }
+    }
   }
 }
 
