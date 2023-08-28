@@ -17,9 +17,17 @@ const AllCollections = () => {
   const pageSize = 10;
 
   const [sort, setSort] = useState("Name");
-  const values = ["Name", "Year", "Critic"];
+  const values = ["Nom", "Année", "Note"];
 
   useEffect(() => {
+    let sortValue = "";
+    if (sort === "Nom") {
+      sortValue = "name";
+    } else if (sort === "Année") {
+      sortValue = "year";
+    } else {
+      sortValue = "critic";
+    }
     get
       .fetchCollections(
         "",
@@ -29,7 +37,7 @@ const AllCollections = () => {
           : 0,
         search,
         pageSize,
-        sort
+        sortValue
       )
       .then((response) => {
         setAllCollections(response.data);
@@ -55,7 +63,7 @@ const AllCollections = () => {
           />
           <SearchIcon />
         </div>
-        <Select name="Filter" values={values} state={setSort} />
+        <Select name="Filtre" values={values} state={setSort} />
       </div>
       <div className="collection-list" key={JSON.stringify(allCollections)}>
         {allCollections.map((collection, idx) => {

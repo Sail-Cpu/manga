@@ -50,7 +50,7 @@ const SignIn = () => {
 
   return (
     <div className="sign sign-in">
-      <SignTitle img={signImage} title="Sign In" japanTitle="繋がり" />
+      <SignTitle img={signImage} title="Connexion" japanTitle="繋がり" />
       <form className="sign-form sign-in-form" onSubmit={(e) => formSubmit(e)}>
         <div className="sign-form-top">
           <div className="sign-inputs">
@@ -62,16 +62,17 @@ const SignIn = () => {
             />
             <Input
               borderColor="#798b91"
-              name="Password"
+              name="Mot de passe"
               setState={setPassword}
               state={password}
+              iType="password"
             />
           </div>
           <SubmitButton name="Sign In" />
         </div>
         <div className="form-error">{error}</div>
         <div className="sign-link">
-          <button onClick={() => navigate("/sign/signup")}>SIGN UP</button>
+          <button onClick={() => navigate("/sign/signup")}>INSCRIPTION</button>
         </div>
       </form>
     </div>

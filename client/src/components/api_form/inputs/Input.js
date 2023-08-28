@@ -5,7 +5,7 @@ const Input = (props) => {
     <div className="api-form-input-container">
       <h2>{props.name}</h2>
       <input
-        type="text"
+        type={props.iType}
         style={{ borderColor: props.borderColor }}
         value={props.state}
         onChange={(e) => props.setState(e.target.value)}

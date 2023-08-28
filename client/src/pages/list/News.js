@@ -37,7 +37,7 @@ const News = () => {
           style={{ backgroundImage: `url(${NewsImage})` }}
         >
           <div className="news-page-top-back"></div>
-          <h1>NEWS</h1>
+          <h1>NOUVEAUTES</h1>
         </div>
         <div
           className="news-page-top-right"

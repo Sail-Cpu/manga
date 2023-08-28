@@ -11,12 +11,12 @@ import Menu_Icon from "../../assets/img/menu_icon.png";
 
 const NavBar = (props) => {
   const tabs = [
-    { first: "HOME", other: [], path: "/" },
+    { first: "ACCUEIL", other: [], path: "/" },
     {
       first: "MANGAS",
       other: [
-        { name: "ALL MANGAS", path: "/allmangas/0" },
-        { name: "ALL COLLECTIONS", path: "/allcollections/0" },
+        { name: "TOUS LES MANGAS", path: "/allmangas/0" },
+        { name: "TOUTES LES COLLECTIONS", path: "/allcollections/0" },
       ],
     },
     { first: "NOUVEAUTES", other: [], path: "/news/0" },

@@ -41,6 +41,14 @@
     background-size: 320%;
   }
 
+  @media screen and (max-width: 780px) {
+    .news-page-top-left {
+      h1 {
+        font-size: 7vw;
+      }
+    }
+  }
+
   @media screen and (max-width: 520px) {
     .news-page-top-left {
       width: 100%;

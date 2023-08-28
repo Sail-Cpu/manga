@@ -18,9 +18,15 @@ const AllMangas = () => {
   const pageSize = 100;
 
   const [sort, setSort] = useState("Name");
-  const values = ["Name", "Date"];
+  const values = ["Nom", "Date"];
 
   useEffect(() => {
+    let sortValue = "";
+    if (sort === "Nom") {
+      sortValue = "name";
+    } else {
+      sortValue = "Date";
+    }
     get
       .fetchMangas(
         "",
@@ -28,7 +34,7 @@ const AllMangas = () => {
         search,
         pageSize,
         "",
-        sort
+        sortValue
       )
       .then((response) => {
         setAllMangas(response.data);
@@ -56,7 +62,7 @@ const AllMangas = () => {
           />
           <SearchIcon />
         </div>
-        <Select name="Filter" values={values} state={setSort} />
+        <Select name="Filtre" values={values} state={setSort} />
       </div>
       <ProductList datas={allMangas} path="/mangas/" />
       <Next
