@@ -48,9 +48,9 @@
   z-index: 5;
   width: 100%;
   background: linear-gradient(
-    0deg,
-    $primary-color 93%,
-    rgba(53, 52, 50, 0) 100%
+                  0deg,
+                  $primary-color 93%,
+                  rgba(53, 52, 50, 0) 100%
   );
 }
 
@@ -175,6 +175,9 @@
 }
 
 @media screen and (max-width: 560px) {
+  .type-container {
+    padding: 150px 0;
+  }
   .type-header-left {
     width: 100%;
   }

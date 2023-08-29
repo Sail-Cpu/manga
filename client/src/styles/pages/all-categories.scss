@@ -1,0 +1,47 @@
+@import "../colors";
+
+.all-categories-page {
+  display: grid;
+  width: 100%;
+  padding: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-flow: row;
+  grid-gap: 20px 2.5vw;
+
+  .category-block-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    height: 300px;
+    background-color: $secondary-color;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+
+    .category-block-back {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      height: 100%;
+    }
+
+    .category-block-top {
+      z-index: 2;
+      width: 100%;
+      font-size: 30px;
+    }
+
+    .category-block-bottom {
+      z-index: 2;
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      font-size: 30px;
+    }
+  }
+}
