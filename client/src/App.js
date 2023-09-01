@@ -1,7 +1,7 @@
-import React, {useContext, useState} from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Context
-import {UserContext} from "./context/UserContext";
+import { UserContext } from "./context/UserContext";
 //Pages
 import Home from "./pages/Home";
 import DataForm from "./pages/api_form/DataForm";
@@ -22,45 +22,42 @@ import NavBar from "./components/navigation/NavBar";
 import News from "./pages/list/News";
 
 function App() {
-    const [activeNav, setActiveNav] = useState(false);
+  const [activeNav, setActiveNav] = useState(false);
 
-    const {getToken} = useContext(UserContext);
+  const { getToken } = useContext(UserContext);
 
-    return (
-        <div className="App">
-            <Router>
-                <NavBar activeNav={activeNav} setActiveNav={setActiveNav}/>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/dataform" element={<DataForm/>}/>
-                    <Route path="/types/:typeID/:typePage" element={<Type/>}/>
-                    <Route path="/collections/:collectionId/" element={<Collection/>}/>
-                    <Route path="/allmangas/:allMangaPage" element={<AllMangas/>}/>
-                    <Route
-                        path="/allCollections/:allCollectionPage"
-                        element={<AllCollections/>}
-                    />
-                    <Route path="/mangas/:mangaId" element={<Manga/>}/>
-                    <Route
-                        path="/category/:categoryID/:categoryPage"
-                        element={<Category/>}
-                    />
-                    <Route
-                        path="/allcategories"
-                        element={<AllCategories/>}
-                    />
-                    <Route path="/sign/signin" element={<SignIn/>}/>
-                    <Route path="/sign/signup" element={<SignUp/>}/>
-                    {getToken() && <Route path="/user" element={<User/>}></Route>}
-                    {getToken() && (
-                        <Route path="/user/usermodif" element={<UserModif/>}></Route>
-                    )}
-                    <Route path="*" element={<NotFound/>}></Route>
-                    <Route path="/news/:newsPage" element={<News/>}></Route>
-                </Routes>
-            </Router>
-        </div>
-    );
+  return (
+    <div className="App">
+      <Router>
+        <NavBar activeNav={activeNav} setActiveNav={setActiveNav} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dataform" element={<DataForm />} />
+          <Route path="/types/:typeID/:typePage" element={<Type />} />
+          <Route path="/collections/:collectionId/" element={<Collection />} />
+          <Route path="/allmangas/:allMangaPage" element={<AllMangas />} />
+          <Route
+            path="/allCollections/:allCollectionPage"
+            element={<AllCollections />}
+          />
+          <Route path="/mangas/:mangaId" element={<Manga />} />
+          <Route
+            path="/category/:categoryID/:categoryPage"
+            element={<Category />}
+          />
+          <Route path="/allcategories" element={<AllCategories />} />
+          <Route path="/sign/signin" element={<SignIn />} />
+          <Route path="/sign/signup" element={<SignUp />} />
+          {getToken() && <Route path="/user" element={<User />}></Route>}
+          {getToken() && (
+            <Route path="/user/usermodif" element={<UserModif />}></Route>
+          )}
+          <Route path="*" element={<NotFound />}></Route>
+          <Route path="/news/:newsPage" element={<News />}></Route>
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

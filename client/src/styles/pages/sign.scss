@@ -1,0 +1,101 @@
+@import "../colors";
+
+.sign {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+
+  input {
+    width: 100px;
+  }
+
+  .sign-form {
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sign-form-top {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 1360px) {
+    .sign-form-top {
+      flex-direction: column;
+      align-items: center;
+    }
+    .sign-inputs {
+      margin-bottom: 30px;
+    }
+  }
+
+  .sign-inputs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.sign-title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border: 4px solid $secondary-color;
+  height: 220px;
+  width: 80%;
+
+  span {
+    color: $text-color;
+    font-size: 35px;
+  }
+
+  .sign-top-name {
+    position: absolute;
+    left: 0;
+    top: -45px;
+  }
+
+  img {
+    position: absolute;
+    height: 300px;
+    bottom: 0;
+  }
+
+  .sign-bottom-name {
+    position: absolute;
+    right: 0;
+    bottom: -55px;
+  }
+}
+
+.form-error {
+  margin-top: 30px;
+  color: red;
+}
+
+.sign-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  button {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: $secondary-color;
+    border: none;
+    cursor: pointer;
+  }
+}
