@@ -22,7 +22,7 @@ const User = () => {
       <div className="user-page-top">
         <button onClick={() => disconect()}>Disconnect</button>
       </div>
-      <UserNav setActiveTab={setActiveTab} />
+      <UserNav setActiveTab={setActiveTab} activeTab={activeTab} />
       <div className="user-page-content">
         {activeTab === "profil" && (
           <UserInfo pseudo={getToken().pseudo} email={getToken().email} />

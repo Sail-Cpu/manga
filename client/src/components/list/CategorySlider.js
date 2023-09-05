@@ -31,6 +31,7 @@ const CategorySlider = () => {
         freeMode={true}
         modules={[FreeMode, Mousewheel]}
         mousewheel={true}
+        className="category-slider"
       >
         {allCategories.map((category, idx) => {
           return (
