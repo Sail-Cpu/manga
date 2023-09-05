@@ -22,7 +22,7 @@ const Product = (props) => {
 
   const likeConfig = {
     method: "post",
-    url: "http://localhost:3002/like",
+    url: `${process.env.REACT_APP_URL_BASE_USER}/like`,
     data: {
       type: props.dataType,
       user_id: getToken()?.id,
@@ -32,7 +32,7 @@ const Product = (props) => {
 
   const dislikeConfig = {
     method: "delete",
-    url: "http://localhost:3002/like",
+    url: ` ${process.env.REACT_APP_URL_BASE_USER}/like`,
     data: {
       type: props.dataType,
       user_id: getToken()?.id,

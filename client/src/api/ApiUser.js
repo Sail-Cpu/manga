@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_LINK = "http://localhost:3002";
+const BASE_LINK = `${process.env.REACT_APP_URL_BASE_USER}`;
 
 export const User = {
   fetchUserById: async (id) => {
@@ -10,7 +10,7 @@ export const User = {
     ).data;
   },
   fetchAllComments: async (product_id, type) => {
-    const endpoint = `http://localhost:3002/commentary/${product_id}?type=${type}`;
+    const endpoint = `${BASE_LINK}/commentary/${product_id}?type=${type}`;
     return await (
       await axios.get(endpoint)
     ).data;

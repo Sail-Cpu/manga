@@ -21,7 +21,7 @@ const SignUp = () => {
 
   const config = {
     method: "post",
-    url: "http://localhost:3002/signup",
+    url: `${process.env.REACT_APP_URL_BASE_USER}/signup`,
     data: {
       email,
       pseudo,

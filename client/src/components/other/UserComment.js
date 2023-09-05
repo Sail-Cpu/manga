@@ -51,7 +51,7 @@ const UserComment = (props) => {
 
   const config = {
     method: "delete",
-    url: "http://localhost:3002/commentary",
+    url: `${process.env.REACT_APP_URL_BASE_USER}/commentary`,
     data: {
       type: "mangas",
       comment_id: props.comment_id,

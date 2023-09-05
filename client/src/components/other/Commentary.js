@@ -26,7 +26,7 @@ const Commentary = (props) => {
 
   const config = {
     method: "post",
-    url: "http://localhost:3002/commentary",
+    url: `${process.env.REACT_APP_URL_BASE_USER}/commentary`,
     data: {
       type: props.type,
       user_id: getToken()?.id,

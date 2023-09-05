@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_LINK = "http://localhost:3001";
+const BASE_LINK = `${process.env.REACT_APP_URL_BASE_MANGA}`;
 
 export const get = {
   fetchImages: async (search) => {

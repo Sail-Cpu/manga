@@ -17,7 +17,7 @@ const UserModif = () => {
 
   const config = {
     method: "patch",
-    url: "http://localhost:3002/user",
+    url: `${process.env.REACT_APP_URL_BASE_USER}/user`,
     data: {
       user_id: getToken()?.id,
       mail: mail,
