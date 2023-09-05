@@ -16,10 +16,10 @@ const News = () => {
 
   useEffect(() => {
     get
-      .fetchMangas("", newsPage > 0 ? newsPage - 1 : 0, "", pageSize, date, "")
+      .fetchMangas("", newsPage, "", pageSize, date, "")
       .then((response) => {
         setNewMangas(response.data);
-        setPage(Math.ceil(response.nbMangas / pageSize));
+        setPage(Math.floor(response.nbMangas / pageSize));
         window.scrollTo(0, 0);
       })
       .catch((error) => {

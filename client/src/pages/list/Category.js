@@ -30,7 +30,7 @@ const Category = () => {
       .fetchCollections("", categoryID, page, "", pageSize, "")
       .then((response) => {
         setAllCollections(response.data);
-        setPage(Math.ceil(response.nbCollections / pageSize));
+        setPage(Math.floor(response.nbCollections / pageSize));
       })
       .catch((error) => {
         console.log(error);

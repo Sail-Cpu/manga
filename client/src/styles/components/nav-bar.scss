@@ -16,7 +16,6 @@
   top: 0;
   width: 25px;
   background-color: $secondary-color;
-  overflow: hidden;
 
   div {
     display: flex;
@@ -56,6 +55,7 @@
   padding: 0 20px;
   width: 350px;
   height: 100vh;
+  min-height: 500px;
   transition: right 0.5s ease;
   right: -400px;
   background-color: $primary-color;
@@ -85,6 +85,7 @@
   left: 0;
   width: 100%;
   height: -webkit-fill-available;
+  overflow-y: auto;
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
@@ -93,7 +94,6 @@
   position: relative;
   width: 100%;
   height: 85%;
-  overflow: auto;
 
   .user-tab-container {
     display: flex;
@@ -160,7 +160,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 15%;
+  height: 120px;
   background-color: $fourth-color;
   font-size: 20px;
   font-weight: 700;

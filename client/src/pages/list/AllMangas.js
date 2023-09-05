@@ -30,7 +30,7 @@ const AllMangas = () => {
     get
       .fetchMangas(
         "",
-        search.length === 0 && allMangaPage > 0 ? allMangaPage - 1 : 0,
+        search.length === 0 ? allMangaPage : 0,
         search,
         pageSize,
         "",
@@ -39,7 +39,7 @@ const AllMangas = () => {
       .then((response) => {
         setAllMangas(response.data);
         setPage(
-          search.length > 0 ? 0 : Math.ceil(response.nbMangas / pageSize)
+          search.length > 0 ? 0 : Math.floor(response.nbMangas / pageSize)
         );
         window.scrollTo(0, 0);
       })

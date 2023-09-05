@@ -121,7 +121,7 @@ const Collection = () => {
 
   const likeConfig = {
     method: "post",
-    url: "http://localhost:3002/like",
+    url: `${process.env.REACT_APP_URL_BASE_USER}/like`,
     data: {
       type: "collections",
       user_id: getToken()?.id,
@@ -131,7 +131,7 @@ const Collection = () => {
 
   const dislikeConfig = {
     method: "delete",
-    url: "http://localhost:3002/like",
+    url: `${process.env.REACT_APP_URL_BASE_USER}/like`,
     data: {
       type: "collections",
       user_id: getToken()?.id,

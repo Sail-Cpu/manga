@@ -75,4 +75,18 @@
       }
     }
   }
+
+  @media screen and (max-width: 730px) {
+    .collection-list-product {
+      justify-content: center;
+      align-items: center;
+    }
+    .collection-list-head {
+      min-width: 100px;
+      width: 100%;
+    }
+    .collection-list-product-content {
+      display: none;
+    }
+  }
 }
