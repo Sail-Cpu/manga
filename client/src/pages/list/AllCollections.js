@@ -32,18 +32,18 @@ const AllCollections = () => {
       .fetchCollections(
         "",
         "",
-        search.length === 0 && allCollectionPage > 0
-          ? allCollectionPage - 1
-          : 0,
+        search.length === 0 ? allCollectionPage : 0,
         search,
         pageSize,
         sortValue
       )
       .then((response) => {
         setAllCollections(response.data);
+        console.log(response.nbCollections);
         setPage(
-          search.length > 0 ? 0 : Math.ceil(response.nbCollections / pageSize)
+          search.length > 0 ? 0 : Math.floor(response.nbCollections / pageSize)
         );
+        console.log(page);
         window.scrollTo(0, 0);
       })
       .catch((error) => {

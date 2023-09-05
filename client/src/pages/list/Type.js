@@ -24,7 +24,9 @@ const Type = () => {
       .fetchCollections(typeID, "", typePage, "", pageSize, "")
       .then((response) => {
         setCollections(response.data);
-        setPage(Math.ceil(response.nbCollections / pageSize));
+        console.log(response.nbCollections);
+        setPage(Math.floor(response.nbCollections / pageSize));
+        console.log(page);
         window.scrollTo(0, 0);
       })
       .catch((error) => {

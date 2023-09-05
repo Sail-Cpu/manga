@@ -27,7 +27,7 @@ const Next = (props) => {
       }
       links[6] = props.page + 1;
     } else {
-      for (let i = 1; i < props.page; i++) {
+      for (let i = 1; i < props.page + 1; i++) {
         links[i] = i + 1;
       }
     }
